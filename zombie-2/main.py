@@ -14,6 +14,8 @@ from machine import SPI
 
 from upy_rfm9x import RFM9x
 
+TIMEOUT = 5
+
 sck=Pin(5)
 mosi=Pin(18)
 miso=Pin(19)
@@ -116,16 +118,17 @@ def push_event(ev):
 
 def push_count():
     i = 0
-    while 1:
-        await rfm9x.receive(timeout=5.0)
+    while True:
+        rfm9x.receive(timeout=TIMEOUT)
         if rfm9x.packet is not None:
             packet_text = str(rfm9x.packet, 'ascii')
             rssi=str(rfm9x.rssi)
             print('Received: {0}'.format(packet_text))
             print("RSSI:",rssi)
-            await push_event("packet: %s; RSSI: %s" % (packet_text,rssi))
+            await push_event("[%s]: %s </br> RSSI: %s" % (i, packet_text,rssi))
         else:
-            await push_event("%s" % i)
+            print("No packet ... ")
+            await push_event("[%s]: (timed out)" % i)
         i += 1
         await uasyncio.sleep(1)
 
