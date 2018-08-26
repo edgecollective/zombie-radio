@@ -131,8 +131,14 @@ def push_event(ev):
 
 def push_count():
     i = 0
+    free_mem_orig=0.
     while True:
-        print(i)
+        if i==0:
+            free_mem_orig=gc.mem_free()
+            mem_diff=0
+        else:
+            mem_diff=gc.mem_free()-free_mem_orig
+        print("iter: %s; mem_diff = %s" % (i,mem_diff))
         rfm9x.receive(timeout=TIMEOUT)
         if rfm9x.packet is not None:
             packet_text = str(rfm9x.packet, 'ascii')
