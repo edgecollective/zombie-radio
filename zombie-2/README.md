@@ -1,6 +1,25 @@
 # ESP32 + Micropython + rfm95
 
-upy_rfm9x.py class doesn't yet work in asyncio mode
+Using Feather Huzzah 32 and Feather RFM9x Wing
+
+
+## Wiring
+
+Huzzah32 -- RFM9x Wing
+
+3V -- 3V
+GND -- GND
+
+MISO (GPIO19) -- MISO
+MOSI (GPIO18) -- MOSI
+SCK (GPIO5) -- SCK
+
+GPIO 15 -- RST (D)
+GPIO 12 -- CS (E)
+
+# Setup
+
+## on ubuntu:
 
 virtualenv venv
 
@@ -17,16 +36,32 @@ ampy -p /dev/ttyUSB0 put events.py
 ampy -p /dev/ttyUSB0 put asyn.py
 ampy -p /dev/ttyUSB0 put aswitch.py
 
-# need to set up wifi access point: jpl, mars-adenture
+NOTE: assumes wifi access point: jpl, mars-adenture
 
-screen /dev/ttyUSB0 115200
+
+## in micropython:
+
+[screen /dev/ttyUSB0 115200 to access micropython REPL]
 
 import hog_prep
 import upip
 upip.install('picoweb')
 
-can now 'import lora_events' to run test code;
+## usage
 
-main.py is same as lora_events
+can now 'import lora_events' to run test code
+
+or can run continuously by putting main.py on board
+
+ipaddress will print on terminal;
+
+navigate to ipaddress:8081 in browser
+
+
+## notes
+
+upy_rfm9x.py class doesn't yet work in asyncio mode
+
+main.py is same as lora_events.py
 
 async_tests folder contains experiments around making the upy_rfm9x.py lib work asynchronously
