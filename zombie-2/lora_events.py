@@ -8,6 +8,7 @@ import uasyncio
 import picoweb
 import network
 import time
+import gc
 
 from machine import Pin
 from machine import SPI
@@ -130,6 +131,8 @@ def push_count():
             print("No packet ... ")
             await push_event("[%s]: (timed out)" % i)
         i += 1
+        blink(.1)
+        gc.collect()
         await uasyncio.sleep(1)
 
 
@@ -150,6 +153,6 @@ app = picoweb.WebApp(None, ROUTES)
 print("host:"+ip[0])
 for i in range(3):
     blink(.2)
-led.value(1)
+
 # note: you'll need to visit ipaddress:8081
 app.run(debug=-1,host=ip[0])
