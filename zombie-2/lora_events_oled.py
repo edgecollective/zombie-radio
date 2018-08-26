@@ -165,7 +165,8 @@ def push_count():
 def update_display(display_text):
     oled.fill(0)
     oled.text(ip[0], 0, 0)
-    oled.text(display_text,0,10)
+    oled.text(':8081',0,10)
+    oled.text(display_text,0,20)
     oled.show()
 #import logging
 #logging.basicConfig(level=logging.INFO)
