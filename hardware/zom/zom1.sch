@@ -33,6 +33,7 @@ LIBS:contrib
 LIBS:valves
 LIBS:mysensors_radios
 LIBS:ESP32-footprints-Shem-Lib
+LIBS:zom1-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -50,12 +51,12 @@ $EndDescr
 $Comp
 L RFM95HW U2
 U 1 1 5B886D30
-P 7250 2550
-F 0 "U2" H 6900 2800 40  0000 C CNN
-F 1 "RFM95HW" H 7500 1800 40  0000 C CNN
-F 2 "zom:RFM95" H 7250 2550 30  0001 C CIN
-F 3 "" H 7250 2550 60  0000 C CNN
-	1    7250 2550
+P 6800 3050
+F 0 "U2" H 6450 3300 40  0000 C CNN
+F 1 "RFM95HW" H 7050 2300 40  0000 C CNN
+F 2 "zom:RFM95" H 6800 3050 30  0001 C CIN
+F 3 "" H 6800 3050 60  0000 C CNN
+	1    6800 3050
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -81,7 +82,7 @@ F 3 "" H 1000 1350 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Text Notes 950  900  0    60   ~ 0
-Regulator: VX7803
+Regulator: VX7803 (3.3V)
 Text GLabel 2050 1050 2    60   Input ~ 0
 VIN
 $Comp
@@ -197,7 +198,7 @@ F 3 "" H 3450 3650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 4050 4000 3    60   Input ~ 0
-13
+13/SAT_SLEEP
 Text GLabel 4750 4000 3    60   Input ~ 0
 15
 Text GLabel 4850 4000 3    60   Input ~ 0
@@ -207,41 +208,41 @@ Text GLabel 3450 3550 0    60   Input ~ 0
 Text GLabel 3450 3450 0    60   Input ~ 0
 14
 Text GLabel 3450 3350 0    60   Input ~ 0
-27
+27/TX3
 Text GLabel 3450 3250 0    60   Input ~ 0
-26
+26/RX3
 Text GLabel 3450 3150 0    60   Input ~ 0
 25
 Text GLabel 3450 3050 0    60   Input ~ 0
-33
+33/TX2
 Text GLabel 3450 2950 0    60   Input ~ 0
-32
+32/TX1
 Text GLabel 3450 2850 0    60   Input ~ 0
-35
+35/RX2
 Text GLabel 3450 2750 0    60   Input ~ 0
-34
+34/RX1
 Text GLabel 3450 2450 0    60   Input ~ 0
 RESET
-Text GLabel 6700 2900 0    60   Input ~ 0
+Text GLabel 6250 3400 0    60   Input ~ 0
 5
-Text GLabel 6700 2800 0    60   Input ~ 0
+Text GLabel 6250 3300 0    60   Input ~ 0
 19
-Text GLabel 6700 2700 0    60   Input ~ 0
+Text GLabel 6250 3200 0    60   Input ~ 0
 18
-Text GLabel 6700 2600 0    60   Input ~ 0
+Text GLabel 6250 3100 0    60   Input ~ 0
 12
 $Comp
 L GND #PWR?
 U 1 1 5B88846E
-P 7250 3500
-F 0 "#PWR?" H 7250 3250 50  0001 C CNN
-F 1 "GND" H 7250 3350 50  0000 C CNN
-F 2 "" H 7250 3500 50  0001 C CNN
-F 3 "" H 7250 3500 50  0001 C CNN
-	1    7250 3500
+P 6800 4000
+F 0 "#PWR?" H 6800 3750 50  0001 C CNN
+F 1 "GND" H 6800 3850 50  0000 C CNN
+F 2 "" H 6800 4000 50  0001 C CNN
+F 3 "" H 6800 4000 50  0001 C CNN
+	1    6800 4000
 	1    0    0    -1  
 $EndComp
-Text GLabel 6700 3050 0    60   Input ~ 0
+Text GLabel 6250 3550 0    60   Input ~ 0
 15
 $Comp
 L Q_NPN_CBE Q?
@@ -482,14 +483,14 @@ Wire Wire Line
 	5300 3600 5400 3600
 Connection ~ 5400 3600
 Wire Wire Line
-	7150 3400 7150 3500
+	6700 3900 6700 4000
 Wire Wire Line
-	7150 3500 7350 3500
+	6700 4000 6900 4000
 Wire Wire Line
-	7350 3500 7350 3400
-Connection ~ 7250 3500
+	6900 4000 6900 3900
+Connection ~ 6800 4000
 Wire Wire Line
-	7250 3400 7250 3500
+	6800 3900 6800 4000
 Wire Wire Line
 	1950 3350 1950 3400
 Connection ~ 1350 3000
@@ -635,12 +636,12 @@ Programming
 $Comp
 L Conn_01x01 J?
 U 1 1 5B88DC11
-P 6700 2200
-F 0 "J?" H 6700 2300 50  0000 C CNN
-F 1 "Conn_01x01" H 6700 2100 50  0000 C CNN
-F 2 "" H 6700 2200 50  0001 C CNN
-F 3 "" H 6700 2200 50  0001 C CNN
-	1    6700 2200
+P 6250 2700
+F 0 "J?" H 6250 2800 50  0000 C CNN
+F 1 "Conn_01x01" H 6250 2600 50  0000 C CNN
+F 2 "" H 6250 2700 50  0001 C CNN
+F 3 "" H 6250 2700 50  0001 C CNN
+	1    6250 2700
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -789,74 +790,49 @@ Wire Wire Line
 	8150 5050 7800 5050
 Connection ~ 8000 5050
 Text GLabel 7800 5050 0    60   Input ~ 0
-33
-Text GLabel 9200 2800 0    60   Input ~ 0
+25
+Text GLabel 8750 3300 0    60   Input ~ 0
 0
-Text GLabel 9200 2900 0    60   Input ~ 0
+Text GLabel 8750 3400 0    60   Input ~ 0
 2
-Text GLabel 9200 3000 0    60   Input ~ 0
-13
-Text GLabel 9200 3100 0    60   Input ~ 0
-26
-Text GLabel 9200 3200 0    60   Input ~ 0
-27
-Text GLabel 9200 3300 0    60   Input ~ 0
-32
 $Comp
 L +3V3 #PWR?
 U 1 1 5B890347
-P 7250 2200
-F 0 "#PWR?" H 7250 2050 50  0001 C CNN
-F 1 "+3V3" H 7250 2340 50  0000 C CNN
-F 2 "" H 7250 2200 50  0001 C CNN
-F 3 "" H 7250 2200 50  0001 C CNN
-	1    7250 2200
+P 6800 2700
+F 0 "#PWR?" H 6800 2550 50  0001 C CNN
+F 1 "+3V3" H 6800 2840 50  0000 C CNN
+F 2 "" H 6800 2700 50  0001 C CNN
+F 3 "" H 6800 2700 50  0001 C CNN
+	1    6800 2700
 	1    0    0    -1  
 $EndComp
-Text GLabel 9200 3400 0    60   Input ~ 0
-33
-Text GLabel 9200 3500 0    60   Input ~ 0
-34
-Text GLabel 9200 3600 0    60   Input ~ 0
-35
 Wire Wire Line
-	9200 2700 8900 2700
+	8750 3200 8450 3200
 Wire Wire Line
-	8800 2600 9200 2600
+	8350 3100 8750 3100
 $Comp
 L +3V3 #PWR?
 U 1 1 5B891AE7
-P 8800 2600
-F 0 "#PWR?" H 8800 2450 50  0001 C CNN
-F 1 "+3V3" H 8800 2740 50  0000 C CNN
-F 2 "" H 8800 2600 50  0001 C CNN
-F 3 "" H 8800 2600 50  0001 C CNN
-	1    8800 2600
+P 8350 3100
+F 0 "#PWR?" H 8350 2950 50  0001 C CNN
+F 1 "+3V3" H 8350 3240 50  0000 C CNN
+F 2 "" H 8350 3100 50  0001 C CNN
+F 3 "" H 8350 3100 50  0001 C CNN
+	1    8350 3100
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR?
 U 1 1 5B891B40
-P 8900 2700
-F 0 "#PWR?" H 8900 2450 50  0001 C CNN
-F 1 "GND" H 8900 2550 50  0000 C CNN
-F 2 "" H 8900 2700 50  0001 C CNN
-F 3 "" H 8900 2700 50  0001 C CNN
-	1    8900 2700
+P 8450 3200
+F 0 "#PWR?" H 8450 2950 50  0001 C CNN
+F 1 "GND" H 8450 3050 50  0000 C CNN
+F 2 "" H 8450 3200 50  0001 C CNN
+F 3 "" H 8450 3200 50  0001 C CNN
+	1    8450 3200
 	1    0    0    -1  
 $EndComp
-$Comp
-L Conn_01x12 J?
-U 1 1 5B891F04
-P 9400 3000
-F 0 "J?" H 9400 3600 50  0000 C CNN
-F 1 "Conn_01x12" H 9400 2300 50  0000 C CNN
-F 2 "" H 9400 3000 50  0001 C CNN
-F 3 "" H 9400 3000 50  0001 C CNN
-	1    9400 3000
-	1    0    0    -1  
-$EndComp
-Text GLabel 9200 2500 0    60   Input ~ 0
+Text GLabel 8750 3000 0    60   Input ~ 0
 VIN
 $Comp
 L Conn_01x02 J?
@@ -919,4 +895,256 @@ F 3 "" H 4150 6750 50  0001 C CNN
 	1    4150 6750
 	1    0    0    -1  
 $EndComp
+$Comp
+L Conn_01x03 J?
+U 1 1 5B895E52
+P 7550 1750
+F 0 "J?" H 7550 1950 50  0000 C CNN
+F 1 "Conn_01x03" H 7550 1550 50  0000 C CNN
+F 2 "" H 7550 1750 50  0001 C CNN
+F 3 "" H 7550 1750 50  0001 C CNN
+	1    7550 1750
+	-1   0    0    1   
+$EndComp
+Text Notes 7500 1300 0    60   ~ 0
+Regulator: VX7803 (5V)
+Text GLabel 8600 1450 2    60   Input ~ 0
+VIN
+$Comp
+L GND #PWR?
+U 1 1 5B895E60
+P 8350 1750
+F 0 "#PWR?" H 8350 1500 50  0001 C CNN
+F 1 "GND" H 8350 1600 50  0000 C CNN
+F 2 "" H 8350 1750 50  0001 C CNN
+F 3 "" H 8350 1750 50  0001 C CNN
+	1    8350 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5B895E66
+P 7950 1600
+F 0 "C?" H 7975 1700 50  0000 L CNN
+F 1 "10 uF" H 7975 1500 50  0000 L CNN
+F 2 "" H 7988 1450 50  0001 C CNN
+F 3 "" H 7950 1600 50  0001 C CNN
+	1    7950 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5B895E6C
+P 7950 1900
+F 0 "C?" H 7975 2000 50  0000 L CNN
+F 1 "22 uF" H 7975 1800 50  0000 L CNN
+F 2 "" H 7988 1750 50  0001 C CNN
+F 3 "" H 7950 1900 50  0001 C CNN
+	1    7950 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7750 1750 8350 1750
+Wire Wire Line
+	7750 1650 7750 1450
+Wire Wire Line
+	7750 1450 8600 1450
+Wire Wire Line
+	7750 1850 7750 2050
+Wire Wire Line
+	7750 2050 8600 2050
+Connection ~ 7950 1450
+Connection ~ 7950 2050
+$Comp
+L Conn_01x15 J?
+U 1 1 5B89722F
+P 10600 2250
+F 0 "J?" H 10600 3050 50  0000 C CNN
+F 1 "Conn_01x15" H 10600 1450 50  0000 C CNN
+F 2 "" H 10600 2250 50  0001 C CNN
+F 3 "" H 10600 2250 50  0001 C CNN
+	1    10600 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5B8973E2
+P 9850 2050
+F 0 "#PWR?" H 9850 1800 50  0001 C CNN
+F 1 "GND" H 9850 1900 50  0000 C CNN
+F 2 "" H 9850 2050 50  0001 C CNN
+F 3 "" H 9850 2050 50  0001 C CNN
+	1    9850 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10400 2050 9850 2050
+Wire Wire Line
+	10400 2250 9950 2250
+Wire Wire Line
+	9950 2250 9950 2050
+Connection ~ 9950 2050
+$Comp
+L +5V #PWR?
+U 1 1 5B897541
+P 8600 2050
+F 0 "#PWR?" H 8600 1900 50  0001 C CNN
+F 1 "+5V" H 8600 2190 50  0000 C CNN
+F 2 "" H 8600 2050 50  0001 C CNN
+F 3 "" H 8600 2050 50  0001 C CNN
+	1    8600 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10400 2350 9600 2350
+$Comp
+L +5V #PWR?
+U 1 1 5B89761E
+P 9600 2350
+F 0 "#PWR?" H 9600 2200 50  0001 C CNN
+F 1 "+5V" H 9600 2490 50  0000 C CNN
+F 2 "" H 9600 2350 50  0001 C CNN
+F 3 "" H 9600 2350 50  0001 C CNN
+	1    9600 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5B897911
+P 10400 2950
+F 0 "#PWR?" H 10400 2700 50  0001 C CNN
+F 1 "GND" H 10400 2800 50  0000 C CNN
+F 2 "" H 10400 2950 50  0001 C CNN
+F 3 "" H 10400 2950 50  0001 C CNN
+	1    10400 2950
+	1    0    0    -1  
+$EndComp
+Text Notes 10150 1300 0    60   ~ 0
+Iridium 9602
+Text GLabel 10400 1750 0    60   Input ~ 0
+34/RX1
+Text GLabel 10400 1650 0    60   Input ~ 0
+32/TX1
+Wire Wire Line
+	9600 1850 10400 1850
+Text GLabel 10400 2750 0    60   Input ~ 0
+13/SAT_SLEEP
+$Comp
+L +5V #PWR?
+U 1 1 5B899DD3
+P 9600 1850
+F 0 "#PWR?" H 9600 1700 50  0001 C CNN
+F 1 "+5V" H 9600 1990 50  0000 C CNN
+F 2 "" H 9600 1850 50  0001 C CNN
+F 3 "" H 9600 1850 50  0001 C CNN
+	1    9600 1850
+	1    0    0    -1  
+$EndComp
+Text GLabel 10400 1950 0    60   Input ~ 0
+SAT_CTS
+Text GLabel 10400 1550 0    60   Input ~ 0
+SAT_RTS
+Text GLabel 10400 2550 0    60   Input ~ 0
+SAT_RING_INDICATOR
+Text GLabel 10400 2650 0    60   Input ~ 0
+SAT_NETWORK_AVAIL
+Text GLabel 10400 2850 0    60   Input ~ 0
+SAT_LION
+Text GLabel 10400 2450 0    60   Input ~ 0
+SAT_5V_OUT
+$Comp
+L Conn_01x04 J?
+U 1 1 5B89A70E
+P 8250 5800
+F 0 "J?" H 8250 6000 50  0000 C CNN
+F 1 "Conn_01x04" H 8250 5500 50  0000 C CNN
+F 2 "" H 8250 5800 50  0001 C CNN
+F 3 "" H 8250 5800 50  0001 C CNN
+	1    8250 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5B89A813
+P 7900 6000
+F 0 "#PWR?" H 7900 5750 50  0001 C CNN
+F 1 "GND" H 7900 5850 50  0000 C CNN
+F 2 "" H 7900 6000 50  0001 C CNN
+F 3 "" H 7900 6000 50  0001 C CNN
+	1    7900 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8050 6000 7900 6000
+Wire Wire Line
+	7550 5900 8050 5900
+$Comp
+L +3V3 #PWR?
+U 1 1 5B89AA80
+P 7550 5900
+F 0 "#PWR?" H 7550 5750 50  0001 C CNN
+F 1 "+3V3" H 7550 6040 50  0000 C CNN
+F 2 "" H 7550 5900 50  0001 C CNN
+F 3 "" H 7550 5900 50  0001 C CNN
+	1    7550 5900
+	1    0    0    -1  
+$EndComp
+Text GLabel 8050 5800 0    60   Input ~ 0
+35/RX2
+Text GLabel 8050 5700 0    60   Input ~ 0
+33/TX2
+$Comp
+L Conn_01x04 J?
+U 1 1 5B89AD0E
+P 9550 5800
+F 0 "J?" H 9550 6000 50  0000 C CNN
+F 1 "Conn_01x04" H 9550 5500 50  0000 C CNN
+F 2 "" H 9550 5800 50  0001 C CNN
+F 3 "" H 9550 5800 50  0001 C CNN
+	1    9550 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5B89AD14
+P 9200 6000
+F 0 "#PWR?" H 9200 5750 50  0001 C CNN
+F 1 "GND" H 9200 5850 50  0000 C CNN
+F 2 "" H 9200 6000 50  0001 C CNN
+F 3 "" H 9200 6000 50  0001 C CNN
+	1    9200 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9350 6000 9200 6000
+Wire Wire Line
+	8850 5900 9350 5900
+$Comp
+L +3V3 #PWR?
+U 1 1 5B89AD1C
+P 8850 5900
+F 0 "#PWR?" H 8850 5750 50  0001 C CNN
+F 1 "+3V3" H 8850 6040 50  0000 C CNN
+F 2 "" H 8850 5900 50  0001 C CNN
+F 3 "" H 8850 5900 50  0001 C CNN
+	1    8850 5900
+	1    0    0    -1  
+$EndComp
+Text GLabel 9350 5800 0    60   Input ~ 0
+27/TX3
+Text GLabel 9350 5700 0    60   Input ~ 0
+26/RX3
+$Comp
+L Conn_01x05 J?
+U 1 1 5B89CB02
+P 8950 3200
+F 0 "J?" H 8950 3500 50  0000 C CNN
+F 1 "Conn_01x05" H 8950 2900 50  0000 C CNN
+F 2 "" H 8950 3200 50  0001 C CNN
+F 3 "" H 8950 3200 50  0001 C CNN
+	1    8950 3200
+	1    0    0    -1  
+$EndComp
+Text Notes 8100 4450 0    60   ~ 0
+DHT22
 $EndSCHEMATC
