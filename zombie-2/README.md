@@ -20,7 +20,7 @@ GPIO 12 -- CS (E)
 # Setup
 
 ## on ubuntu:
-
+```
 virtualenv venv
 
 source venv/bin/activate
@@ -35,23 +35,23 @@ ampy -p /dev/ttyUSB0 put hog_prep.py
 ampy -p /dev/ttyUSB0 put events.py
 ampy -p /dev/ttyUSB0 put asyn.py
 ampy -p /dev/ttyUSB0 put aswitch.py
-
+```
 NOTE: assumes wifi access point: jpl, mars-adenture
 
 
 ## in micropython:
 
-[screen /dev/ttyUSB0 115200 to access micropython REPL]
-
+[`screen /dev/ttyUSB0 115200 to access micropython REPL`]
+```python
 import hog_prep
 import upip
 upip.install('picoweb')
-
+```
 ## usage
 
-can now 'import lora_events' to run test code
+can now `import lora_events` to run test code
 
-or can run continuously by putting main.py on board
+or can run continuously by putting `main.py` on board
 
 ipaddress will print on terminal;
 
@@ -60,7 +60,7 @@ navigate to ipaddress:8081 in browser
 
 ## notes
 
-upy_rfm9x.py class doesn't yet work in asyncio mode
+`upy_rfm9x.py` class doesn't yet work in asyncio mode
 
 main.py is same as lora_events.py
 
