@@ -33,6 +33,7 @@ python esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 esp32-2
 
 ampy -p /dev/ttyUSB0 put hog_prep.py
 ampy -p /dev/ttyUSB0 put lora_events.py
+ampy -p /dev/ttyUSB0 put upy_rfm9x.py
 ampy -p /dev/ttyUSB0 put asyn.py
 ampy -p /dev/ttyUSB0 put aswitch.py
 ```
