@@ -492,7 +492,7 @@ L Conn_01x04 J5
 U 1 1 5B88CA10
 P 5100 5550
 F 0 "J5" H 5100 5750 50  0000 C CNN
-F 1 "oled" H 5100 5250 50  0000 C CNN
+F 1 "i2c-a" H 5100 5250 50  0000 C CNN
 F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 5100 5550 50  0001 C CNN
 F 3 "" H 5100 5550 50  0001 C CNN
 	1    5100 5550
@@ -525,7 +525,7 @@ SCL
 Text GLabel 4900 5450 0    60   Input ~ 0
 SDA
 Text Notes 4700 5250 0    60   ~ 0
-OLED DISPLAY
+i2c-a
 $Comp
 L +3V3 #PWR017
 U 1 1 5B88CFF6
@@ -561,7 +561,7 @@ L Conn_01x04 J8
 U 1 1 5B88E011
 P 6850 5850
 F 0 "J8" H 6850 6050 50  0000 C CNN
-F 1 "i2c" H 6850 5550 50  0000 C CNN
+F 1 "i2c-c" H 6850 5550 50  0000 C CNN
 F 2 "TerminalBlocks_Phoenix:TerminalBlock_Phoenix_PT-3.5mm_4pol" H 6850 5850 50  0001 C CNN
 F 3 "" H 6850 5850 50  0001 C CNN
 	1    6850 5850
@@ -594,7 +594,7 @@ SCL
 Text GLabel 6650 5750 0    60   Input ~ 0
 SDA
 Text Notes 6450 5550 0    60   ~ 0
-i2c
+i2c-c
 $Comp
 L GND #PWR020
 U 1 1 5B88E374
@@ -1184,4 +1184,47 @@ Connection ~ 3000 1200
 Connection ~ 3000 1100
 Connection ~ 3700 1000
 Connection ~ 8650 1900
+$Comp
+L Conn_01x04 J18
+U 1 1 5B8F474A
+P 5600 6700
+F 0 "J18" H 5600 6900 50  0000 C CNN
+F 1 "i2c-b" H 5600 6400 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 5600 6700 50  0001 C CNN
+F 3 "" H 5600 6700 50  0001 C CNN
+	1    5600 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR037
+U 1 1 5B8F4750
+P 5200 6900
+F 0 "#PWR037" H 5200 6650 50  0001 C CNN
+F 1 "GND" H 5200 6750 50  0000 C CNN
+F 2 "" H 5200 6900 50  0001 C CNN
+F 3 "" H 5200 6900 50  0001 C CNN
+	1    5200 6900
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3V3 #PWR038
+U 1 1 5B8F4756
+P 4950 6800
+F 0 "#PWR038" H 4950 6650 50  0001 C CNN
+F 1 "+3V3" H 4950 6940 50  0000 C CNN
+F 2 "" H 4950 6800 50  0001 C CNN
+F 3 "" H 4950 6800 50  0001 C CNN
+	1    4950 6800
+	1    0    0    -1  
+$EndComp
+Text GLabel 5400 6700 0    60   Input ~ 0
+SCL
+Text GLabel 5400 6600 0    60   Input ~ 0
+SDA
+Text Notes 5200 6400 0    60   ~ 0
+i2c-b
+Wire Wire Line
+	5200 6900 5400 6900
+Wire Wire Line
+	4950 6800 5400 6800
 $EndSCHEMATC
