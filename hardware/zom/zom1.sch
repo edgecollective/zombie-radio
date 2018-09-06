@@ -154,7 +154,7 @@ Text GLabel 5300 3300 2    60   Input ~ 0
 4
 Text GLabel 5300 3400 2    60   Input ~ 0
 0
-Text GLabel 5300 2600 2    60   Input ~ 0
+Text GLabel 5300 2200 2    60   Input ~ 0
 23/SAT_SLEEP
 Text GLabel 5300 2500 2    60   Input ~ 0
 RX0
@@ -917,8 +917,8 @@ Text GLabel 5300 2400 2    60   Input ~ 0
 TX0
 Text GLabel 5300 2300 2    60   Input ~ 0
 22
-Text GLabel 5300 2200 2    60   Input ~ 0
-23
+Text GLabel 5300 2600 2    60   Input ~ 0
+21
 Text GLabel 3450 3550 0    60   Input ~ 0
 12/SDA
 Text GLabel 3450 3450 0    60   Input ~ 0

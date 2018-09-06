@@ -821,8 +821,8 @@ F 3 "" H 6550 6800 50  0001 C CNN
 	1    6550 6800
 	1    0    0    -1  
 $EndComp
-Text GLabel 10900 1750 0    60   Input ~ 0
-21/SAT_SLEEP
+Text GLabel 10900 1650 0    60   Input ~ 0
+23/SAT_SLEEP
 Text Notes 7200 5450 0    60   ~ 0
 DHT22
 Text GLabel 9200 2400 0    60   Input ~ 0
