@@ -51,12 +51,12 @@ $EndDescr
 $Comp
 L RFM95HW U2
 U 1 1 5B886D30
-P 6800 3050
-F 0 "U2" H 6450 3300 40  0000 C CNN
-F 1 "RFM95HW" H 7050 2300 40  0000 C CNN
-F 2 "zom:RFM95" H 6800 3050 30  0001 C CIN
-F 3 "" H 6800 3050 60  0000 C CNN
-	1    6800 3050
+P 6950 3900
+F 0 "U2" H 6600 4150 40  0000 C CNN
+F 1 "RFM95HW" H 7200 3150 40  0000 C CNN
+F 2 "zom:RFM95" H 6950 3900 30  0001 C CIN
+F 3 "" H 6950 3900 60  0000 C CNN
+	1    6950 3900
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -149,21 +149,15 @@ Text GLabel 5300 3000 2    60   Input ~ 0
 Text GLabel 5300 3100 2    60   Input ~ 0
 17
 Text GLabel 5300 3200 2    60   Input ~ 0
-SCL
+16
 Text GLabel 5300 3300 2    60   Input ~ 0
-SDA
+4
 Text GLabel 5300 3400 2    60   Input ~ 0
 0
 Text GLabel 5300 2600 2    60   Input ~ 0
 21
 Text GLabel 5300 2500 2    60   Input ~ 0
 RXD0
-Text GLabel 5300 2400 2    60   Input ~ 0
-TXD0
-Text GLabel 5300 2300 2    60   Input ~ 0
-22
-Text GLabel 5300 2200 2    60   Input ~ 0
-23
 $Comp
 L GND #PWR04
 U 1 1 5B888151
@@ -203,47 +197,19 @@ Text GLabel 4750 4000 3    60   Input ~ 0
 15
 Text GLabel 4850 4000 3    60   Input ~ 0
 2
-Text GLabel 3450 3550 0    60   Input ~ 0
-12
-Text GLabel 3450 3450 0    60   Input ~ 0
-14
-Text GLabel 3450 3350 0    60   Input ~ 0
-27/SAT_SLEEP
-Text GLabel 3450 3250 0    60   Input ~ 0
-26
-Text GLabel 3450 3150 0    60   Input ~ 0
-25
-Text GLabel 3450 3050 0    60   Input ~ 0
-33/TX2
-Text GLabel 3450 2950 0    60   Input ~ 0
-32/TX1
-Text GLabel 3450 2850 0    60   Input ~ 0
-35/RX2
-Text GLabel 3450 2750 0    60   Input ~ 0
-34/RX1
 Text GLabel 3450 2450 0    60   Input ~ 0
 RESET
-Text GLabel 6250 3400 0    60   Input ~ 0
-5
-Text GLabel 6250 3300 0    60   Input ~ 0
-19
-Text GLabel 6250 3200 0    60   Input ~ 0
-18
-Text GLabel 6250 3100 0    60   Input ~ 0
-12
 $Comp
 L GND #PWR07
 U 1 1 5B88846E
-P 6800 4000
-F 0 "#PWR07" H 6800 3750 50  0001 C CNN
-F 1 "GND" H 6800 3850 50  0000 C CNN
-F 2 "" H 6800 4000 50  0001 C CNN
-F 3 "" H 6800 4000 50  0001 C CNN
-	1    6800 4000
+P 6950 4850
+F 0 "#PWR07" H 6950 4600 50  0001 C CNN
+F 1 "GND" H 6950 4700 50  0000 C CNN
+F 2 "" H 6950 4850 50  0001 C CNN
+F 3 "" H 6950 4850 50  0001 C CNN
+	1    6950 4850
 	1    0    0    -1  
 $EndComp
-Text GLabel 6250 3600 0    60   Input ~ 0
-15
 $Comp
 L Q_NPN_CBE Q1
 U 1 1 5B8887FC
@@ -323,9 +289,9 @@ $EndComp
 Text GLabel 1350 5150 0    60   Input ~ 0
 RTS
 Text GLabel 1350 5050 0    60   Input ~ 0
-TX0
+TXD0
 Text GLabel 1350 4950 0    60   Input ~ 0
-RX0
+RXD0
 Text GLabel 1350 4850 0    60   Input ~ 0
 VIN
 Text GLabel 1350 5250 0    60   Input ~ 0
@@ -455,14 +421,6 @@ F 3 "" H 3750 5550 50  0001 C CNN
 	1    3750 5550
 	1    0    0    -1  
 $EndComp
-Text GLabel 3550 5250 0    60   Input ~ 0
-14
-Text GLabel 3550 5350 0    60   Input ~ 0
-21
-Text GLabel 3550 5650 0    60   Input ~ 0
-23
-Text GLabel 3550 5850 0    60   Input ~ 0
-17
 $Comp
 L GND #PWR013
 U 1 1 5B88C019
@@ -520,10 +478,6 @@ F 3 "" H 4450 5650 50  0001 C CNN
 	1    4450 5650
 	1    0    0    -1  
 $EndComp
-Text GLabel 4900 5550 0    60   Input ~ 0
-SCL
-Text GLabel 4900 5450 0    60   Input ~ 0
-SDA
 Text Notes 4700 5250 0    60   ~ 0
 i2c-a
 $Comp
@@ -537,10 +491,6 @@ F 3 "" H 3800 6750 50  0001 C CNN
 	1    3800 6750
 	1    0    0    -1  
 $EndComp
-Text GLabel 3800 7050 3    60   Input ~ 0
-SCL
-Text GLabel 4150 7050 3    60   Input ~ 0
-SDA
 Text Notes 3700 6450 0    60   ~ 0
 i2c pullups
 Text Notes 1100 4450 0    60   ~ 0
@@ -548,174 +498,162 @@ Programming
 $Comp
 L Conn_01x01 J7
 U 1 1 5B88DC11
-P 6250 2700
-F 0 "J7" H 6250 2800 50  0000 C CNN
-F 1 "ANT" H 6250 2600 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 6250 2700 50  0001 C CNN
-F 3 "" H 6250 2700 50  0001 C CNN
-	1    6250 2700
+P 6400 3550
+F 0 "J7" H 6400 3650 50  0000 C CNN
+F 1 "ANT" H 6400 3450 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 6400 3550 50  0001 C CNN
+F 3 "" H 6400 3550 50  0001 C CNN
+	1    6400 3550
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Conn_01x04 J8
 U 1 1 5B88E011
-P 6850 5850
-F 0 "J8" H 6850 6050 50  0000 C CNN
-F 1 "i2c-c" H 6850 5550 50  0000 C CNN
-F 2 "TerminalBlocks_Phoenix:TerminalBlock_Phoenix_PT-3.5mm_4pol" H 6850 5850 50  0001 C CNN
-F 3 "" H 6850 5850 50  0001 C CNN
-	1    6850 5850
+P 5500 6750
+F 0 "J8" H 5500 6950 50  0000 C CNN
+F 1 "i2c-c" H 5500 6450 50  0000 C CNN
+F 2 "TerminalBlocks_Phoenix:TerminalBlock_Phoenix_PT-3.5mm_4pol" H 5500 6750 50  0001 C CNN
+F 3 "" H 5500 6750 50  0001 C CNN
+	1    5500 6750
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR018
 U 1 1 5B88E017
-P 6450 6050
-F 0 "#PWR018" H 6450 5800 50  0001 C CNN
-F 1 "GND" H 6450 5900 50  0000 C CNN
-F 2 "" H 6450 6050 50  0001 C CNN
-F 3 "" H 6450 6050 50  0001 C CNN
-	1    6450 6050
+P 4800 6750
+F 0 "#PWR018" H 4800 6500 50  0001 C CNN
+F 1 "GND" H 4800 6600 50  0000 C CNN
+F 2 "" H 4800 6750 50  0001 C CNN
+F 3 "" H 4800 6750 50  0001 C CNN
+	1    4800 6750
 	1    0    0    -1  
 $EndComp
 $Comp
 L +3V3 #PWR019
 U 1 1 5B88E01F
-P 6200 5950
-F 0 "#PWR019" H 6200 5800 50  0001 C CNN
-F 1 "+3V3" H 6200 6090 50  0000 C CNN
-F 2 "" H 6200 5950 50  0001 C CNN
-F 3 "" H 6200 5950 50  0001 C CNN
-	1    6200 5950
+P 5300 6650
+F 0 "#PWR019" H 5300 6500 50  0001 C CNN
+F 1 "+3V3" H 5300 6790 50  0000 C CNN
+F 2 "" H 5300 6650 50  0001 C CNN
+F 3 "" H 5300 6650 50  0001 C CNN
+	1    5300 6650
 	1    0    0    -1  
 $EndComp
-Text GLabel 6650 5850 0    60   Input ~ 0
-SCL
-Text GLabel 6650 5750 0    60   Input ~ 0
-SDA
-Text Notes 6450 5550 0    60   ~ 0
-i2c-c
+Text Notes 5100 6450 0    60   ~ 0
+i2c-screwterm
 $Comp
 L GND #PWR020
 U 1 1 5B88E374
-P 6400 4900
-F 0 "#PWR020" H 6400 4650 50  0001 C CNN
-F 1 "GND" H 6400 4750 50  0000 C CNN
-F 2 "" H 6400 4900 50  0001 C CNN
-F 3 "" H 6400 4900 50  0001 C CNN
-	1    6400 4900
+P 5850 5500
+F 0 "#PWR020" H 5850 5250 50  0001 C CNN
+F 1 "GND" H 5850 5350 50  0000 C CNN
+F 2 "" H 5850 5500 50  0001 C CNN
+F 3 "" H 5850 5500 50  0001 C CNN
+	1    5850 5500
 	1    0    0    -1  
 $EndComp
 $Comp
 L +3V3 #PWR021
 U 1 1 5B88E37C
-P 6150 4800
-F 0 "#PWR021" H 6150 4650 50  0001 C CNN
-F 1 "+3V3" H 6150 4940 50  0000 C CNN
-F 2 "" H 6150 4800 50  0001 C CNN
-F 3 "" H 6150 4800 50  0001 C CNN
-	1    6150 4800
+P 6250 5300
+F 0 "#PWR021" H 6250 5150 50  0001 C CNN
+F 1 "+3V3" H 6250 5440 50  0000 C CNN
+F 2 "" H 6250 5300 50  0001 C CNN
+F 3 "" H 6250 5300 50  0001 C CNN
+	1    6250 5300
 	1    0    0    -1  
 $EndComp
 $Comp
 L Conn_01x03 J9
 U 1 1 5B88E413
-P 6950 4800
-F 0 "J9" H 6950 5000 50  0000 C CNN
-F 1 "1wire" H 6950 4600 50  0000 C CNN
-F 2 "TerminalBlocks_Phoenix:TerminalBlock_Phoenix_PT-3.5mm_3pol" H 6950 4800 50  0001 C CNN
-F 3 "" H 6950 4800 50  0001 C CNN
-	1    6950 4800
-	1    0    0    -1  
+P 5650 5400
+F 0 "J9" H 5650 5600 50  0000 C CNN
+F 1 "1wire" H 5650 5200 50  0000 C CNN
+F 2 "TerminalBlocks_Phoenix:TerminalBlock_Phoenix_PT-3.5mm_3pol" H 5650 5400 50  0001 C CNN
+F 3 "" H 5650 5400 50  0001 C CNN
+	1    5650 5400
+	-1   0    0    1   
 $EndComp
-Text GLabel 6550 4700 0    60   Input ~ 0
-22
-Text Notes 6600 4450 0    60   ~ 0
+Text Notes 5650 5050 0    60   ~ 0
 1-wire
 $Comp
 L Conn_01x04 J12
 U 1 1 5B88ED29
-P 8600 4850
-F 0 "J12" H 8600 5050 50  0000 C CNN
-F 1 "dht22" H 8600 4550 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 8600 4850 50  0001 C CNN
-F 3 "" H 8600 4850 50  0001 C CNN
-	1    8600 4850
+P 7700 5850
+F 0 "J12" H 7700 6050 50  0000 C CNN
+F 1 "dht22" H 7700 5550 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 7700 5850 50  0001 C CNN
+F 3 "" H 7700 5850 50  0001 C CNN
+	1    7700 5850
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR022
 U 1 1 5B88EDCA
-P 8300 5050
-F 0 "#PWR022" H 8300 4800 50  0001 C CNN
-F 1 "GND" H 8300 4900 50  0000 C CNN
-F 2 "" H 8300 5050 50  0001 C CNN
-F 3 "" H 8300 5050 50  0001 C CNN
-	1    8300 5050
+P 7400 6050
+F 0 "#PWR022" H 7400 5800 50  0001 C CNN
+F 1 "GND" H 7400 5900 50  0000 C CNN
+F 2 "" H 7400 6050 50  0001 C CNN
+F 3 "" H 7400 6050 50  0001 C CNN
+	1    7400 6050
 	1    0    0    -1  
 $EndComp
 $Comp
 L +3V3 #PWR023
 U 1 1 5B88EF8F
-P 8000 4750
-F 0 "#PWR023" H 8000 4600 50  0001 C CNN
-F 1 "+3V3" H 8000 4890 50  0000 C CNN
-F 2 "" H 8000 4750 50  0001 C CNN
-F 3 "" H 8000 4750 50  0001 C CNN
-	1    8000 4750
+P 7100 5750
+F 0 "#PWR023" H 7100 5600 50  0001 C CNN
+F 1 "+3V3" H 7100 5890 50  0000 C CNN
+F 2 "" H 7100 5750 50  0001 C CNN
+F 3 "" H 7100 5750 50  0001 C CNN
+	1    7100 5750
 	1    0    0    -1  
 $EndComp
 $Comp
 L R R7
 U 1 1 5B88F0C7
-P 8000 4900
-F 0 "R7" V 8080 4900 50  0000 C CNN
-F 1 "R" V 8000 4900 50  0000 C CNN
-F 2 "Resistors_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P1.90mm_Vertical" V 7930 4900 50  0001 C CNN
-F 3 "" H 8000 4900 50  0001 C CNN
-	1    8000 4900
+P 7100 5900
+F 0 "R7" V 7180 5900 50  0000 C CNN
+F 1 "R" V 7100 5900 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P1.90mm_Vertical" V 7030 5900 50  0001 C CNN
+F 3 "" H 7100 5900 50  0001 C CNN
+	1    7100 5900
 	1    0    0    -1  
 $EndComp
-Text GLabel 7800 5050 0    60   Input ~ 0
-25
-Text GLabel 10400 3800 0    60   Input ~ 0
-0
-Text GLabel 10400 3900 0    60   Input ~ 0
-2
 $Comp
 L +3V3 #PWR024
 U 1 1 5B890347
-P 6800 2700
-F 0 "#PWR024" H 6800 2550 50  0001 C CNN
-F 1 "+3V3" H 6800 2840 50  0000 C CNN
-F 2 "" H 6800 2700 50  0001 C CNN
-F 3 "" H 6800 2700 50  0001 C CNN
-	1    6800 2700
+P 6950 3550
+F 0 "#PWR024" H 6950 3400 50  0001 C CNN
+F 1 "+3V3" H 6950 3690 50  0000 C CNN
+F 2 "" H 6950 3550 50  0001 C CNN
+F 3 "" H 6950 3550 50  0001 C CNN
+	1    6950 3550
 	1    0    0    -1  
 $EndComp
 $Comp
 L +3V3 #PWR025
 U 1 1 5B891AE7
-P 10000 3600
-F 0 "#PWR025" H 10000 3450 50  0001 C CNN
-F 1 "+3V3" H 10000 3740 50  0000 C CNN
-F 2 "" H 10000 3600 50  0001 C CNN
-F 3 "" H 10000 3600 50  0001 C CNN
-	1    10000 3600
+P 10500 1450
+F 0 "#PWR025" H 10500 1300 50  0001 C CNN
+F 1 "+3V3" H 10500 1590 50  0000 C CNN
+F 2 "" H 10500 1450 50  0001 C CNN
+F 3 "" H 10500 1450 50  0001 C CNN
+	1    10500 1450
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR026
 U 1 1 5B891B40
-P 10100 3700
-F 0 "#PWR026" H 10100 3450 50  0001 C CNN
-F 1 "GND" H 10100 3550 50  0000 C CNN
-F 2 "" H 10100 3700 50  0001 C CNN
-F 3 "" H 10100 3700 50  0001 C CNN
-	1    10100 3700
+P 10600 1550
+F 0 "#PWR026" H 10600 1300 50  0001 C CNN
+F 1 "GND" H 10600 1400 50  0000 C CNN
+F 2 "" H 10600 1550 50  0001 C CNN
+F 3 "" H 10600 1550 50  0001 C CNN
+	1    10600 1550
 	1    0    0    -1  
 $EndComp
-Text GLabel 10400 3500 0    60   Input ~ 0
+Text GLabel 10900 1350 0    60   Input ~ 0
 VIN
 $Comp
 L Conn_01x02 J3
@@ -825,17 +763,6 @@ F 3 "" H 6500 1600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Conn_01x15 J13
-U 1 1 5B89722F
-P 9400 2100
-F 0 "J13" H 9400 2900 50  0000 C CNN
-F 1 "9602" H 9400 1300 50  0000 C CNN
-F 2 "Socket_Strips:Socket_Strip_Straight_1x15_Pitch2.54mm" H 9400 2100 50  0001 C CNN
-F 3 "" H 9400 2100 50  0001 C CNN
-	1    9400 2100
-	1    0    0    -1  
-$EndComp
-$Comp
 L GND #PWR030
 U 1 1 5B8973E2
 P 8650 1900
@@ -881,10 +808,6 @@ F 3 "" H 9200 2800 50  0001 C CNN
 $EndComp
 Text Notes 8950 1150 0    60   ~ 0
 Iridium 9602
-Text GLabel 9200 1600 0    60   Input ~ 0
-32/TX1
-Text GLabel 9200 1500 0    60   Input ~ 0
-34/RX1
 Text GLabel 9200 2600 0    60   Input ~ 0
 27/SAT_SLEEP
 $Comp
@@ -905,194 +828,20 @@ SAT_NETWORK_AVAIL
 Text GLabel 9200 2700 0    60   Input ~ 0
 SAT_LION
 $Comp
-L Conn_01x04 J11
-U 1 1 5B89A70E
-P 8250 5800
-F 0 "J11" H 8250 6000 50  0000 C CNN
-F 1 "UART" H 8250 5500 50  0000 C CNN
-F 2 "TerminalBlocks_Phoenix:TerminalBlock_Phoenix_PT-3.5mm_4pol" H 8250 5800 50  0001 C CNN
-F 3 "" H 8250 5800 50  0001 C CNN
-	1    8250 5800
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR035
-U 1 1 5B89A813
-P 7900 6000
-F 0 "#PWR035" H 7900 5750 50  0001 C CNN
-F 1 "GND" H 7900 5850 50  0000 C CNN
-F 2 "" H 7900 6000 50  0001 C CNN
-F 3 "" H 7900 6000 50  0001 C CNN
-	1    7900 6000
-	1    0    0    -1  
-$EndComp
-$Comp
-L +3V3 #PWR036
+L +3V3 #PWR035
 U 1 1 5B89AA80
-P 7550 5900
-F 0 "#PWR036" H 7550 5750 50  0001 C CNN
-F 1 "+3V3" H 7550 6040 50  0000 C CNN
-F 2 "" H 7550 5900 50  0001 C CNN
-F 3 "" H 7550 5900 50  0001 C CNN
-	1    7550 5900
+P 6550 6800
+F 0 "#PWR035" H 6550 6650 50  0001 C CNN
+F 1 "+3V3" H 6550 6940 50  0000 C CNN
+F 2 "" H 6550 6800 50  0001 C CNN
+F 3 "" H 6550 6800 50  0001 C CNN
+	1    6550 6800
 	1    0    0    -1  
 $EndComp
-Text GLabel 8050 5800 0    60   Input ~ 0
-35/RX2
-Text GLabel 8050 5700 0    60   Input ~ 0
-33/TX2
-Text GLabel 10400 4200 0    60   Input ~ 0
+Text GLabel 10900 2450 0    60   Input ~ 0
 27/SAT_SLEEP
-Text GLabel 10400 4100 0    60   Input ~ 0
-26
-Text Notes 8100 4450 0    60   ~ 0
+Text Notes 7200 5450 0    60   ~ 0
 DHT22
-Wire Wire Line
-	1200 1350 1800 1350
-Wire Wire Line
-	1200 1250 1200 1050
-Wire Wire Line
-	1200 1050 2050 1050
-Wire Wire Line
-	1200 1450 1200 1650
-Wire Wire Line
-	1200 1650 2050 1650
-Connection ~ 1400 1050
-Connection ~ 1400 1650
-Wire Wire Line
-	5300 3500 5400 3500
-Wire Wire Line
-	5400 3500 5400 3700
-Wire Wire Line
-	5300 3600 5400 3600
-Connection ~ 5400 3600
-Wire Wire Line
-	6700 3900 6700 4000
-Wire Wire Line
-	6700 4000 6900 4000
-Wire Wire Line
-	6900 4000 6900 3900
-Connection ~ 6800 4000
-Wire Wire Line
-	6800 3900 6800 4000
-Wire Wire Line
-	1950 3350 1950 3400
-Connection ~ 1350 3000
-Wire Wire Line
-	1350 2750 1350 3200
-Wire Wire Line
-	1350 3200 1500 3350
-Wire Wire Line
-	1500 3350 1950 3350
-Wire Wire Line
-	1950 3200 1500 3200
-Wire Wire Line
-	1500 3200 1350 3350
-Wire Wire Line
-	1350 3350 1350 3900
-Wire Wire Line
-	1950 2800 1950 2650
-Wire Wire Line
-	1950 3800 1950 4000
-Connection ~ 1350 3600
-Wire Wire Line
-	1350 4650 1000 4650
-Wire Wire Line
-	950  6300 950  6700
-Wire Wire Line
-	950  6500 1300 6500
-Wire Wire Line
-	1300 6500 1300 6750
-Connection ~ 950  6500
-Wire Wire Line
-	1300 7200 950  7200
-Wire Wire Line
-	950  7200 950  7100
-Wire Wire Line
-	1300 7050 1300 7200
-Wire Wire Line
-	1900 6300 1900 6700
-Wire Wire Line
-	1900 6500 2250 6500
-Wire Wire Line
-	2250 6500 2250 6750
-Connection ~ 1900 6500
-Wire Wire Line
-	2250 7200 1900 7200
-Wire Wire Line
-	1900 7200 1900 7100
-Wire Wire Line
-	2250 7050 2250 7200
-Wire Wire Line
-	3100 5550 3550 5550
-Wire Wire Line
-	3550 5450 3200 5450
-Wire Wire Line
-	3200 5450 3200 5750
-Wire Wire Line
-	3200 5750 3550 5750
-Wire Wire Line
-	4700 5750 4900 5750
-Wire Wire Line
-	4450 5650 4900 5650
-Wire Wire Line
-	6450 6050 6650 6050
-Wire Wire Line
-	6200 5950 6650 5950
-Wire Wire Line
-	6400 4900 6750 4900
-Wire Wire Line
-	6150 4800 6750 4800
-Wire Wire Line
-	6550 4700 6750 4700
-Wire Wire Line
-	6650 4800 6650 4700
-Connection ~ 6650 4700
-Connection ~ 6650 4800
-Wire Wire Line
-	8400 5050 8300 5050
-Wire Wire Line
-	8000 4750 8400 4750
-Wire Wire Line
-	8400 4850 8150 4850
-Wire Wire Line
-	8150 4850 8150 5050
-Wire Wire Line
-	8150 5050 7800 5050
-Connection ~ 8000 5050
-Wire Wire Line
-	10400 3700 10100 3700
-Wire Wire Line
-	10000 3600 10400 3600
-Wire Wire Line
-	2900 1200 3550 1200
-Wire Wire Line
-	6300 1450 6900 1450
-Wire Wire Line
-	6300 1350 6300 1150
-Wire Wire Line
-	6300 1150 7150 1150
-Wire Wire Line
-	6300 1550 6300 1750
-Wire Wire Line
-	6300 1750 7150 1750
-Connection ~ 6500 1150
-Connection ~ 6500 1750
-Wire Wire Line
-	8650 1900 9200 1900
-Wire Wire Line
-	9200 2100 8750 2100
-Wire Wire Line
-	8750 2100 8750 1900
-Connection ~ 8750 1900
-Wire Wire Line
-	9200 2200 8400 2200
-Wire Wire Line
-	8400 1700 9200 1700
-Wire Wire Line
-	8050 6000 7900 6000
-Wire Wire Line
-	7550 5900 8050 5900
 Text GLabel 9200 2400 0    60   Input ~ 0
 SAT_RING_INDICATOR
 $Comp
@@ -1106,125 +855,355 @@ F 3 "" H 9850 2500 50  0001 C CNN
 	1    9850 2500
 	1    0    0    -1  
 $EndComp
+Text Notes 6350 6600 0    60   ~ 0
+UART
+Text Notes 6850 3200 0    60   ~ 0
+RFM95
+Text Notes 7200 5450 0    60   ~ 0
+DHT22
+Text Notes 8650 3550 0    60   ~ 0
+RMF95 BREAKOUTS
 $Comp
-L Conn_01x06 J10
-U 1 1 5B8A2945
-P 7550 3250
-F 0 "J10" H 7550 3550 50  0000 C CNN
-F 1 "LBD" H 7550 2850 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x06_Pitch2.54mm" H 7550 3250 50  0001 C CNN
-F 3 "" H 7550 3250 50  0001 C CNN
-	1    7550 3250
+L Conn_01x12 J15
+U 1 1 5B90241E
+P 11100 1850
+F 0 "J15" H 11100 2450 50  0000 C CNN
+F 1 "misc" H 11100 1150 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x12_Pitch2.54mm" H 11100 1850 50  0001 C CNN
+F 3 "" H 11100 1850 50  0001 C CNN
+	1    11100 1850
 	1    0    0    -1  
 $EndComp
+$Comp
+L Conn_01x05 J11
+U 1 1 5B902931
+P 6750 7000
+F 0 "J11" H 6750 7300 50  0000 C CNN
+F 1 "uart" H 6750 6700 50  0000 C CNN
+F 2 "TerminalBlocks_Phoenix:TerminalBlock_Phoenix_PT-3.5mm_5pol" H 6750 7000 50  0001 C CNN
+F 3 "" H 6750 7000 50  0001 C CNN
+	1    6750 7000
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR036
+U 1 1 5B902A1C
+P 6550 7200
+F 0 "#PWR036" H 6550 6950 50  0001 C CNN
+F 1 "GND" H 6550 7050 50  0000 C CNN
+F 2 "" H 6550 7200 50  0001 C CNN
+F 3 "" H 6550 7200 50  0001 C CNN
+	1    6550 7200
+	1    0    0    -1  
+$EndComp
+Text GLabel 6550 6900 0    60   Input ~ 0
+VIN
+$Comp
+L Conn_01x08 J19
+U 1 1 5B90464D
+P 9400 2400
+F 0 "J19" H 9400 2800 50  0000 C CNN
+F 1 "9602-b" H 9400 1900 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm" H 9400 2400 50  0001 C CNN
+F 3 "" H 9400 2400 50  0001 C CNN
+	1    9400 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Conn_01x06 J13
+U 1 1 5B9046D0
+P 9400 1600
+F 0 "J13" H 9400 1900 50  0000 C CNN
+F 1 "9602-a" H 9400 1200 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06_Pitch2.54mm" H 9400 1600 50  0001 C CNN
+F 3 "" H 9400 1600 50  0001 C CNN
+	1    9400 1600
+	1    0    0    -1  
+$EndComp
+Text GLabel 6400 3950 0    60   Input ~ 0
+26
+Text GLabel 6400 4050 0    60   Input ~ 0
+33
+Text GLabel 6400 4150 0    60   Input ~ 0
+32
+Text GLabel 6400 4250 0    60   Input ~ 0
+25
+Text GLabel 6400 4450 0    60   Input ~ 0
+27
+Text GLabel 5300 2400 2    60   Input ~ 0
+TXD0
+Text GLabel 5300 2300 2    60   Input ~ 0
+22
+Text GLabel 5300 2200 2    60   Input ~ 0
+23
+Text GLabel 3450 3550 0    60   Input ~ 0
+12/SDA
+Text GLabel 3450 3450 0    60   Input ~ 0
+14/SCL
+Text GLabel 3450 3350 0    60   Input ~ 0
+27
+Text GLabel 3450 3250 0    60   Input ~ 0
+26
+Text GLabel 3450 3150 0    60   Input ~ 0
+25
+Text GLabel 3450 3050 0    60   Input ~ 0
+33
+Text GLabel 3450 2950 0    60   Input ~ 0
+32
+Text GLabel 3450 2850 0    60   Input ~ 0
+35
+Text GLabel 3450 2750 0    60   Input ~ 0
+34
+$Comp
+L R R8
+U 1 1 5B916E8E
+P 6250 5450
+F 0 "R8" V 6330 5450 50  0000 C CNN
+F 1 "R" V 6250 5450 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P1.90mm_Vertical" V 6180 5450 50  0001 C CNN
+F 3 "" H 6250 5450 50  0001 C CNN
+	1    6250 5450
+	1    0    0    -1  
+$EndComp
+Text GLabel 7500 4400 2    60   Input ~ 0
+DIO5
+$Comp
+L Conn_01x06 J10
+U 1 1 5B91954E
+P 8800 4100
+F 0 "J10" H 8800 4400 50  0000 C CNN
+F 1 "LBD" H 8800 3700 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06_Pitch2.54mm" H 8800 4100 50  0001 C CNN
+F 3 "" H 8800 4100 50  0001 C CNN
+	1    8800 4100
+	1    0    0    -1  
+$EndComp
+Text GLabel 7500 4300 2    60   Input ~ 0
+DIO4
+Text GLabel 7500 4200 2    60   Input ~ 0
+DIO3
+Text GLabel 7500 4100 2    60   Input ~ 0
+DIO2
+Text GLabel 7500 4000 2    60   Input ~ 0
+DIO1
+Text GLabel 7500 3900 2    60   Input ~ 0
+DIO0
+Text GLabel 8600 3900 0    60   Input ~ 0
+DIO2
+Text GLabel 8600 4000 0    60   Input ~ 0
+DIO1
+Text GLabel 8600 4100 0    60   Input ~ 0
+DIO0
+$Comp
+L +3V3 #PWR037
+U 1 1 5B91A050
+P 8100 4200
+F 0 "#PWR037" H 8100 4050 50  0001 C CNN
+F 1 "+3V3" H 8100 4340 50  0000 C CNN
+F 2 "" H 8100 4200 50  0001 C CNN
+F 3 "" H 8100 4200 50  0001 C CNN
+	1    8100 4200
+	1    0    0    -1  
+$EndComp
+Text GLabel 8600 4300 0    60   Input ~ 0
+DIO4
+Text GLabel 8600 4400 0    60   Input ~ 0
+DIO3
+$Comp
+L Conn_02x03_Odd_Even J16
+U 1 1 5B91ABB9
+P 9500 4250
+F 0 "J16" H 9550 4450 50  0000 C CNN
+F 1 "LBO" H 9550 4050 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x03_Pitch2.54mm" H 9500 4250 50  0001 C CNN
+F 3 "" H 9500 4250 50  0001 C CNN
+	1    9500 4250
+	0    -1   -1   0   
+$EndComp
+Text GLabel 9400 3950 1    60   Input ~ 0
+32
+Text GLabel 9500 3950 1    60   Input ~ 0
+25
+Text GLabel 9600 3950 1    60   Input ~ 0
+27
+Text GLabel 9400 4450 3    60   Input ~ 0
+33
+Text GLabel 9500 4450 3    60   Input ~ 0
+26
+Text GLabel 9600 4450 3    60   Input ~ 0
+DIO5
+Text GLabel 9200 1500 0    60   Input ~ 0
+34
+Text GLabel 9200 1600 0    60   Input ~ 0
+13
+Text GLabel 4900 5550 0    60   Input ~ 0
+14/SCL
+Text GLabel 4900 5450 0    60   Input ~ 0
+12/SDA
+Text GLabel 5300 6850 0    60   Input ~ 0
+12/SDA
+Text GLabel 5300 6950 0    60   Input ~ 0
+14/SCL
+Text GLabel 3800 7250 3    60   Input ~ 0
+12/SDA
+Text GLabel 4150 7250 3    60   Input ~ 0
+14/SCL
 Wire Wire Line
-	9200 2400 9650 2400
+	5850 5400 6000 5400
 Wire Wire Line
-	9200 2500 9650 2500
+	5300 6750 4800 6750
+Wire Wire Line
+	8100 4200 8600 4200
+Wire Wire Line
+	4150 7050 4150 7250
+Wire Wire Line
+	3800 7050 3800 7250
+Wire Wire Line
+	3000 1200 2900 1200
+Connection ~ 8650 1900
+Wire Wire Line
+	9200 2700 9650 2700
 Wire Wire Line
 	9200 2600 9650 2600
 Wire Wire Line
-	9200 2700 9650 2700
-Text Notes 7850 5500 0    60   ~ 0
-UART
-$Comp
-L Conn_01x08 J15
-U 1 1 5B8A3F4D
-P 10600 3800
-F 0 "J15" H 10600 4200 50  0000 C CNN
-F 1 "MISC" H 10600 3300 50  0000 C CNN
-F 2 "Socket_Strips:Socket_Strip_Straight_1x08_Pitch2.54mm" H 10600 3800 50  0001 C CNN
-F 3 "" H 10600 3800 50  0001 C CNN
-	1    10600 3800
-	1    0    0    -1  
-$EndComp
-Text GLabel 10400 4000 0    60   Input ~ 0
-13
-Text Notes 6700 2350 0    60   ~ 0
-RFM95
-$Comp
-L Conn_01x05 J16
-U 1 1 5B8C972B
-P 10150 5250
-F 0 "J16" H 10150 5550 50  0000 C CNN
-F 1 "LBO" H 10150 4950 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x05_Pitch2.54mm" H 10150 5250 50  0001 C CNN
-F 3 "" H 10150 5250 50  0001 C CNN
-	1    10150 5250
-	1    0    0    -1  
-$EndComp
-Text GLabel 9950 5050 0    60   Input ~ 0
-12
-Text GLabel 9950 5150 0    60   Input ~ 0
-18
-Text GLabel 9950 5250 0    60   Input ~ 0
-19
-Text GLabel 9950 5350 0    60   Input ~ 0
-5
-Text GLabel 9950 5450 0    60   Input ~ 0
-15
-Text Notes 8100 4450 0    60   ~ 0
-DHT22
-Text Notes 9750 4850 0    60   ~ 0
-LORA PINS
-$Comp
-L Conn_01x02 J17
-U 1 1 5B8F1E8D
-P 3750 1100
-F 0 "J17" H 3750 1200 50  0000 C CNN
-F 1 "VIN2" H 3750 900 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 3750 1100 50  0001 C CNN
-F 3 "" H 3750 1100 50  0001 C CNN
-	1    3750 1100
-	1    0    0    -1  
-$EndComp
+	9200 2500 9650 2500
 Wire Wire Line
-	3000 1100 3550 1100
-Connection ~ 3000 1200
-Connection ~ 3000 1100
-Connection ~ 3700 1000
-Connection ~ 8650 1900
-$Comp
-L Conn_01x04 J18
-U 1 1 5B8F474A
-P 5600 6700
-F 0 "J18" H 5600 6900 50  0000 C CNN
-F 1 "i2c-b" H 5600 6400 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 5600 6700 50  0001 C CNN
-F 3 "" H 5600 6700 50  0001 C CNN
-	1    5600 6700
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR037
-U 1 1 5B8F4750
-P 5200 6900
-F 0 "#PWR037" H 5200 6650 50  0001 C CNN
-F 1 "GND" H 5200 6750 50  0000 C CNN
-F 2 "" H 5200 6900 50  0001 C CNN
-F 3 "" H 5200 6900 50  0001 C CNN
-	1    5200 6900
-	1    0    0    -1  
-$EndComp
-$Comp
-L +3V3 #PWR038
-U 1 1 5B8F4756
-P 4950 6800
-F 0 "#PWR038" H 4950 6650 50  0001 C CNN
-F 1 "+3V3" H 4950 6940 50  0000 C CNN
-F 2 "" H 4950 6800 50  0001 C CNN
-F 3 "" H 4950 6800 50  0001 C CNN
-	1    4950 6800
-	1    0    0    -1  
-$EndComp
-Text GLabel 5400 6700 0    60   Input ~ 0
-SCL
-Text GLabel 5400 6600 0    60   Input ~ 0
-SDA
-Text Notes 5200 6400 0    60   ~ 0
-i2c-b
+	9200 2400 9650 2400
 Wire Wire Line
-	5200 6900 5400 6900
+	6050 7000 6550 7000
 Wire Wire Line
-	4950 6800 5400 6800
+	8400 1700 9200 1700
+Wire Wire Line
+	9200 2200 8400 2200
+Connection ~ 8750 1900
+Wire Wire Line
+	8750 2100 8750 1900
+Wire Wire Line
+	9200 2100 8750 2100
+Wire Wire Line
+	8650 1900 9200 1900
+Connection ~ 6500 1750
+Connection ~ 6500 1150
+Wire Wire Line
+	6300 1750 7150 1750
+Wire Wire Line
+	6300 1550 6300 1750
+Wire Wire Line
+	6300 1150 7150 1150
+Wire Wire Line
+	6300 1350 6300 1150
+Wire Wire Line
+	6300 1450 6900 1450
+Wire Wire Line
+	10500 1450 10900 1450
+Wire Wire Line
+	10900 1550 10600 1550
+Connection ~ 7100 6050
+Wire Wire Line
+	7250 6050 6900 6050
+Wire Wire Line
+	7250 5850 7250 6050
+Wire Wire Line
+	7500 5850 7250 5850
+Wire Wire Line
+	7100 5750 7500 5750
+Wire Wire Line
+	7500 6050 7400 6050
+Wire Wire Line
+	4450 5650 4900 5650
+Wire Wire Line
+	4700 5750 4900 5750
+Wire Wire Line
+	3200 5750 3550 5750
+Wire Wire Line
+	3200 5450 3200 5750
+Wire Wire Line
+	3550 5450 3200 5450
+Wire Wire Line
+	3100 5550 3550 5550
+Wire Wire Line
+	2250 7050 2250 7200
+Wire Wire Line
+	1900 7200 1900 7100
+Wire Wire Line
+	2250 7200 1900 7200
+Connection ~ 1900 6500
+Wire Wire Line
+	2250 6500 2250 6750
+Wire Wire Line
+	1900 6500 2250 6500
+Wire Wire Line
+	1900 6300 1900 6700
+Wire Wire Line
+	1300 7050 1300 7200
+Wire Wire Line
+	950  7200 950  7100
+Wire Wire Line
+	1300 7200 950  7200
+Connection ~ 950  6500
+Wire Wire Line
+	1300 6500 1300 6750
+Wire Wire Line
+	950  6500 1300 6500
+Wire Wire Line
+	950  6300 950  6700
+Wire Wire Line
+	1350 4650 1000 4650
+Connection ~ 1350 3600
+Wire Wire Line
+	1950 3800 1950 4000
+Wire Wire Line
+	1950 2800 1950 2650
+Wire Wire Line
+	1350 3350 1350 3900
+Wire Wire Line
+	1500 3200 1350 3350
+Wire Wire Line
+	1950 3200 1500 3200
+Wire Wire Line
+	1500 3350 1950 3350
+Wire Wire Line
+	1350 3200 1500 3350
+Wire Wire Line
+	1350 2750 1350 3200
+Connection ~ 1350 3000
+Wire Wire Line
+	1950 3350 1950 3400
+Wire Wire Line
+	6950 4750 6950 4850
+Connection ~ 6950 4850
+Wire Wire Line
+	7050 4850 7050 4750
+Wire Wire Line
+	6850 4850 7050 4850
+Wire Wire Line
+	6850 4750 6850 4850
+Connection ~ 5400 3600
+Wire Wire Line
+	5300 3600 5400 3600
+Wire Wire Line
+	5400 3500 5400 3700
+Wire Wire Line
+	5300 3500 5400 3500
+Connection ~ 1400 1650
+Connection ~ 1400 1050
+Wire Wire Line
+	1200 1650 2050 1650
+Wire Wire Line
+	1200 1450 1200 1650
+Wire Wire Line
+	1200 1050 2050 1050
+Wire Wire Line
+	1200 1250 1200 1050
+Wire Wire Line
+	1200 1350 1800 1350
+Wire Wire Line
+	6000 5400 6000 5600
+Wire Wire Line
+	6000 5600 6450 5600
+Wire Wire Line
+	6250 5300 5850 5300
+Connection ~ 6250 5600
+Connection ~ 6500 1450
+Connection ~ 1400 1350
 $EndSCHEMATC
