@@ -83,7 +83,7 @@ F 3 "" H 1000 1350 50  0001 C CNN
 $EndComp
 Text Notes 950  900  0    60   ~ 0
 Regulator: VX7803 (3.3V)
-Text GLabel 2050 1050 2    60   Input ~ 0
+Text GLabel 2150 1050 2    60   Input ~ 0
 VIN
 $Comp
 L +3V3 #PWR01
@@ -289,7 +289,7 @@ $EndComp
 Text GLabel 1350 5150 0    60   Input ~ 0
 RTS
 Text GLabel 1350 4850 0    60   Input ~ 0
-VIN
+VBUS
 Text GLabel 1350 5250 0    60   Input ~ 0
 DTR
 $Comp
@@ -630,12 +630,12 @@ $EndComp
 $Comp
 L +3V3 #PWR025
 U 1 1 5B891AE7
-P 10500 1450
-F 0 "#PWR025" H 10500 1300 50  0001 C CNN
-F 1 "+3V3" H 10500 1590 50  0000 C CNN
-F 2 "" H 10500 1450 50  0001 C CNN
-F 3 "" H 10500 1450 50  0001 C CNN
-	1    10500 1450
+P 10500 2250
+F 0 "#PWR025" H 10500 2100 50  0001 C CNN
+F 1 "+3V3" H 10500 2390 50  0000 C CNN
+F 2 "" H 10500 2250 50  0001 C CNN
+F 3 "" H 10500 2250 50  0001 C CNN
+	1    10500 2250
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -821,8 +821,6 @@ F 3 "" H 6550 6800 50  0001 C CNN
 	1    6550 6800
 	1    0    0    -1  
 $EndComp
-Text GLabel 10900 1650 0    60   Input ~ 0
-23/SAT_SLEEP
 Text Notes 7200 5450 0    60   ~ 0
 DHT22
 Text GLabel 9200 2400 0    60   Input ~ 0
@@ -1039,21 +1037,17 @@ Text GLabel 3550 5350 0    60   Input ~ 0
 4
 Text GLabel 3550 5250 0    60   Input ~ 0
 15
-Text GLabel 10900 1350 0    60   Input ~ 0
-35
-Text GLabel 10900 2350 0    60   Input ~ 0
-VIN
 Text GLabel 6900 6050 0    60   Input ~ 0
 18
 $Comp
 L GND #PWR037
 U 1 1 5B891B40
-P 10600 1550
-F 0 "#PWR037" H 10600 1300 50  0001 C CNN
-F 1 "GND" H 10600 1400 50  0000 C CNN
-F 2 "" H 10600 1550 50  0001 C CNN
-F 3 "" H 10600 1550 50  0001 C CNN
-	1    10600 1550
+P 10200 2150
+F 0 "#PWR037" H 10200 1900 50  0001 C CNN
+F 1 "GND" H 10200 2000 50  0000 C CNN
+F 2 "" H 10200 2150 50  0001 C CNN
+F 3 "" H 10200 2150 50  0001 C CNN
+	1    10200 2150
 	1    0    0    -1  
 $EndComp
 Text GLabel 1350 5050 0    60   Input ~ 0
@@ -1082,8 +1076,6 @@ Wire Wire Line
 Wire Wire Line
 	9200 2400 9650 2400
 Wire Wire Line
-	6050 7000 6550 7000
-Wire Wire Line
 	8400 1700 9200 1700
 Wire Wire Line
 	9200 2200 8400 2200
@@ -1106,15 +1098,13 @@ Wire Wire Line
 	6300 1350 6300 1150
 Wire Wire Line
 	6300 1450 6900 1450
-Wire Wire Line
-	10500 1450 10900 1450
 Connection ~ 7100 6050
 Wire Wire Line
-	7250 6050 6900 6050
+	6900 6050 7250 6050
 Wire Wire Line
-	7250 5850 7250 6050
+	7250 6050 7250 5850
 Wire Wire Line
-	7500 5850 7250 5850
+	7250 5850 7500 5850
 Wire Wire Line
 	7100 5750 7500 5750
 Wire Wire Line
@@ -1202,7 +1192,7 @@ Wire Wire Line
 Wire Wire Line
 	1200 1450 1200 1650
 Wire Wire Line
-	1200 1050 2050 1050
+	1200 1050 1850 1050
 Wire Wire Line
 	1200 1250 1200 1050
 Wire Wire Line
@@ -1217,6 +1207,46 @@ Connection ~ 6250 5600
 Connection ~ 6500 1450
 Connection ~ 1400 1350
 Connection ~ 2950 -750
+Text GLabel 6450 5600 2    60   Input ~ 0
+22
+Text GLabel 2150 700  2    60   Input ~ 0
+VBUS
 Wire Wire Line
-	10900 1550 10600 1550
+	1850 1050 1850 700 
+$Comp
+L D D1
+U 1 1 5B91BD42
+P 2000 700
+F 0 "D1" H 2000 800 50  0000 C CNN
+F 1 "D" H 2000 600 50  0000 C CNN
+F 2 "Diodes_THT:D_DO-201_P5.08mm_Vertical_AnodeUp" H 2000 700 50  0001 C CNN
+F 3 "" H 2000 700 50  0001 C CNN
+	1    2000 700 
+	1    0    0    -1  
+$EndComp
+$Comp
+L D D2
+U 1 1 5B91BFA9
+P 2000 1050
+F 0 "D2" H 2000 1150 50  0000 C CNN
+F 1 "D" H 2000 950 50  0000 C CNN
+F 2 "Diodes_THT:D_DO-201_P5.08mm_Vertical_AnodeUp" H 2000 1050 50  0001 C CNN
+F 3 "" H 2000 1050 50  0001 C CNN
+	1    2000 1050
+	1    0    0    -1  
+$EndComp
+Connection ~ 1850 1050
+Connection ~ 1850 700 
+Text GLabel 6550 7000 0    60   Input ~ 0
+21
+Text GLabel 6550 7100 0    60   Input ~ 0
+19
+Text GLabel 10900 2350 0    60   Input ~ 0
+14/SCL
+Text GLabel 10900 2450 0    60   Input ~ 0
+12/SDA
+Wire Wire Line
+	10900 2250 10500 2250
+Wire Wire Line
+	10900 2150 10200 2150
 $EndSCHEMATC
