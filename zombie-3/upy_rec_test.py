@@ -5,14 +5,14 @@ from upy_rfm9x import RFM9x
 
 import time
 
-sck=Pin(5)
-mosi=Pin(18)
-miso=Pin(19)
-cs = Pin(12, Pin.OUT)
+sck=Pin(25)
+mosi=Pin(33)
+miso=Pin(32)
+cs = Pin(26, Pin.OUT)
 #reset=Pin(13)
 led = Pin(13,Pin.OUT)
 
-resetNum=15
+resetNum=27
 
 #sck=Pin(32)
 #mosi=Pin(33)
@@ -46,10 +46,14 @@ spi=SPI(2,baudrate=5000000,sck=sck,mosi=mosi,miso=miso)
 rfm9x = RFM9x(spi, cs, resetNum, 915.0)
 
 print('listening ...')
-rfm9x.receive(timeout=5.0)
-if rfm9x.packet is not None:
-    packet_text = str(rfm9x.packet, 'ascii')
-    print('Received: {0}'.format(packet_text))
-    print("RSSI:",rfm9x.rssi)
-    blink(.2)
+while True:
+    rfm9x.receive(timeout=5.0)
+    if rfm9x.packet is not None:
+        try:
+            packet_text = str(rfm9x.packet, 'ascii')
+            print('Received: {0}'.format(packet_text))
+            print("RSSI:",rfm9x.rssi)
+            blink(.2)
+        except:
+            print("oops!")
 spi.deinit()
