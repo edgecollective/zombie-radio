@@ -79,7 +79,7 @@ F 1 "REG:3V3" H 1000 1150 50  0000 C CNN
 F 2 "Socket_Strips:Socket_Strip_Straight_1x03_Pitch2.54mm" H 1000 1350 50  0001 C CNN
 F 3 "" H 1000 1350 50  0001 C CNN
 	1    1000 1350
-	-1   0    0    1   
+	1    0    0    -1  
 $EndComp
 Text Notes 950  900  0    60   ~ 0
 Regulator: VX7803 (3.3V)
@@ -706,7 +706,7 @@ F 1 "REG:5V" H 6100 1250 50  0000 C CNN
 F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 6100 1450 50  0001 C CNN
 F 3 "" H 6100 1450 50  0001 C CNN
 	1    6100 1450
-	-1   0    0    1   
+	1    0    0    -1  
 $EndComp
 Text Notes 6050 1000 0    60   ~ 0
 Regulator: VX7803 (5V)
@@ -1095,7 +1095,7 @@ Wire Wire Line
 Wire Wire Line
 	6300 1350 6300 1150
 Wire Wire Line
-	6300 1450 6900 1450
+	5900 1450 6900 1450
 Connection ~ 7100 6050
 Wire Wire Line
 	6900 6050 7250 6050
@@ -1190,7 +1190,7 @@ Wire Wire Line
 Wire Wire Line
 	1200 1250 1200 1050
 Wire Wire Line
-	1200 1350 1800 1350
+	800  1350 1800 1350
 Wire Wire Line
 	6000 5400 6000 5600
 Wire Wire Line
@@ -1279,4 +1279,12 @@ Wire Wire Line
 	4900 5900 4900 5750
 Wire Wire Line
 	4450 5900 4900 5900
+Wire Wire Line
+	1200 1250 800  1250
+Wire Wire Line
+	1200 1450 800  1450
+Wire Wire Line
+	6300 1350 5900 1350
+Wire Wire Line
+	6300 1550 5900 1550
 $EndSCHEMATC
