@@ -12,7 +12,7 @@ L.LatLngGraticule = L.Layer.extend({
         opacity: 1,
         weight: 0.8,
         color: '#aaa',
-        font: '16px Verdana',
+        font: '16px Arial Black',
         lngLineCurved: 0,
         latLineCurved: 0,
         zoomInterval: [
@@ -435,9 +435,11 @@ L.LatLngGraticule = L.Layer.extend({
             };
 
             if (latInterval > 0) {
+                mycount=0; //dwb fix
                 for (var i=latInterval; i<=_lat_t; i+=latInterval) {
                     if (i >= _lat_b) {
-                        __draw_lat_line(this, i,"A");
+                        mycount+=1;
+                        __draw_lat_line(this, i,"A"+mycount.toString());
                     }
                 }
                 for (var i=0; i>=_lat_b; i-=latInterval) {
@@ -508,14 +510,17 @@ L.LatLngGraticule = L.Layer.extend({
             };
 
             if (lngInterval > 0) {
+                mycount=0;
                 for (var i=lngInterval; i<=_lon_r; i+=lngInterval) {
                     if (i >= _lon_l) {
-                        __draw_lon_line(this, i,"B");
+                        mycount+=1;
+                        __draw_lon_line(this, i,"B"+mycount.toString());
                     }
                 }
                 for (var i=0; i>=_lon_l; i-=lngInterval) {
                     if (i <= _lon_r) {
-                        __draw_lon_line(this, i,"Q");
+                        mycount+=1;
+                        __draw_lon_line(this, i,"B"+mycount.toString());
                     }
                 }
             }
