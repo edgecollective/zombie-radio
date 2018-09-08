@@ -4,7 +4,7 @@
 *  Author: lanwei@cloudybay.com.tw
 */
 
-var offset=8;
+var offset=0;
 
 L.LatLngGraticule = L.Layer.extend({
     options: {
@@ -435,11 +435,11 @@ L.LatLngGraticule = L.Layer.extend({
             };
 
             if (latInterval > 0) {
-                mycount=0; //dwb fix
+                mycount=-1350; //dwb fix
                 for (var i=latInterval; i<=_lat_t; i+=latInterval) {
                     if (i >= _lat_b) {
                         mycount+=1;
-                        __draw_lat_line(this, i,"A"+mycount.toString());
+                        __draw_lat_line(this, i,"Y"+mycount.toString());
                     }
                 }
                 for (var i=0; i>=_lat_b; i-=latInterval) {
@@ -510,17 +510,17 @@ L.LatLngGraticule = L.Layer.extend({
             };
 
             if (lngInterval > 0) {
-                mycount=0;
+                mycount=-1050;
                 for (var i=lngInterval; i<=_lon_r; i+=lngInterval) {
                     if (i >= _lon_l) {
                         mycount+=1;
-                        __draw_lon_line(this, i,"B"+mycount.toString());
+                        __draw_lon_line(this, i,"X"+mycount.toString());
                     }
                 }
                 for (var i=0; i>=_lon_l; i-=lngInterval) {
                     if (i <= _lon_r) {
                         mycount+=1;
-                        __draw_lon_line(this, i,"B"+mycount.toString());
+                        __draw_lon_line(this, i,"X"+mycount.toString());
                     }
                 }
             }
