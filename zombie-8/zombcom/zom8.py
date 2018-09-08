@@ -10,7 +10,7 @@ from machine import SPI
 
 from upy_rfm9x import RFM9x
 
-TIMEOUT = .1
+TIMEOUT = .01
 DISPLAY = True
 
 if DISPLAY:
@@ -21,6 +21,10 @@ if DISPLAY:
     oled.fill(0)
     oled.show()
 
+if DISPLAY:
+    oled.fill(0)
+    oled.text("Starting up ...",0,0)
+    oled.show()
 
 sck=Pin(25)
 mosi=Pin(33)
@@ -115,7 +119,6 @@ def push_event(ev):
 def push_count():
     i = 0
     while True:
-        await uasyncio.sleep(.9)
         rfm9x.receive(timeout=TIMEOUT)
         if rfm9x.packet is not None:
             try:
@@ -124,29 +127,26 @@ def push_count():
                 print('Received: {0}'.format(packet_text))
                 print("RSSI:",rssi)
                 if DISPLAY:
-                    display_text="[%s]:%s,%s" % (i, packet_text,rssi)
+                    display_text="[%s]:%s" % (i, packet_text)
                     update_display(display_text)
-                await push_event("[%s]: %s </br> RSSI: %s" % (i, packet_text,rssi))
+                #await push_event("[#%s RSSI:%s]:  %s" % (i, rssi, packet_text))
+                await push_event("- %s" % packet_text)
+                i += 1
             except:
                 print("some error?")
                 if DISPLAY:
                     display_text="[%s]: (garbled msg)" % i
                     update_display(display_text)
-        else:
-            print("No packet ... ")
-            if DISPLAY:
-                display_text="[%s]: (timed out)" % i
-                update_display(display_text)
-            await push_event("[%s]: (timed out)" % i)
-        i += 1
         blink(.1)
         gc.collect()
-        await uasyncio.sleep(1)
+        await uasyncio.sleep(.09)
 
 
 #import logging
 #logging.basicConfig(level=logging.INFO)
 #logging.basicConfig(level=logging.DEBUG)
+
+
 
 loop = uasyncio.get_event_loop()
 loop.create_task(push_count())
@@ -159,6 +159,9 @@ app = picoweb.WebApp(None, ROUTES)
 # 1 (True) debug logging
 # 2 extra debug logging
 print("host:"+ip[0])
+if DISPLAY:
+    display_text="Server started."
+    update_display(display_text)
 for i in range(3):
     blink(.2)
 
