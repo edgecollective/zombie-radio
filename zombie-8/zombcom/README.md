@@ -34,6 +34,7 @@ esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 esp32-20180821
 ampy -p /dev/ttyUSB0 put upy_rfm9x.py
 ampy -p /dev/ttyUSB0 put secret_settings.py
 ampy -p /dev/ttyUSB0 put hog_prep.py
+ampy -p /dev/ttyUSB0 put test.html
 ampy -p /dev/ttyUSB0 put main.py
 ```
 NOTE: default assumes wifi access point: 
