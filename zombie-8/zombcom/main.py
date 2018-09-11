@@ -11,7 +11,7 @@ from machine import SPI
 from upy_rfm9x import RFM9x
 
 TIMEOUT = .01
-DISPLAY = True
+DISPLAY = False
 
 if DISPLAY:
     import ssd1306
@@ -26,14 +26,25 @@ if DISPLAY:
     oled.text("Starting up ...",0,0)
     oled.show()
 
-sck=Pin(25)
-mosi=Pin(33)
-miso=Pin(32)
-cs = Pin(26, Pin.OUT)
+# Craig's pins
+sck=Pin(5)
+mosi=Pin(18)
+miso=Pin(19)
+cs = Pin(12, Pin.OUT)
 #reset=Pin(13)
 led = Pin(13,Pin.OUT)
 
-resetNum=27
+resetNum=15
+
+
+# FIXME Don's pins
+#sck=Pin(25)
+#mosi=Pin(33)
+#miso=Pin(32)
+#cs = Pin(26, Pin.OUT)
+#led = Pin(13,Pin.OUT)
+
+#resetNum=27
 
 spi=SPI(2,baudrate=5000000,sck=sck,mosi=mosi,miso=miso)
 
@@ -41,8 +52,11 @@ spi=SPI(2,baudrate=5000000,sck=sck,mosi=mosi,miso=miso)
 
 rfm9x = RFM9x(spi, cs, resetNum, 915.0)
 
-ssid = "jpl"
-password =  "mars-adventure"
+
+#ssid = "jpl"
+#password =  "mars-adventure"
+from secret_settings import ssid, password
+
  
 station = network.WLAN(network.STA_IF)
 station.active(True)
@@ -51,7 +65,8 @@ station.connect(ssid, password)
 while station.isconnected() == False:
     pass
 
-ip = station.ifconfig()
+ip = station.ifconfig()[0]
+print("Station IP: %s" % ip)
 
 event_sinks = set()
 
