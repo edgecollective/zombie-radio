@@ -1,12 +1,18 @@
 # setting up the esp32
 
 ## put relevant files on esp32:
+
+```
 ampy -p /dev/ttyUSB0 put e.html
 ampy -p /dev/ttyUSB0 put zom9.html
 ampy -p /dev/ttyUSB0 put static
+```
 
 ## connect to esp32
+
+```
 screen /dev/ttyUSB0 115200
+```
 
 ## run web server on esp32:
 
@@ -28,12 +34,14 @@ To install BOSSA on Ubuntu, download the github repo [here](https://github.com/s
 
 Basically, in Ubuntu you need these prequisites:
 
+```
 sudo apt-get install build-essentials
 sudo apt-get install build-essential 
 sudo apt-get install libreadline-dev
 sudo apt-get install wx3.0-headers 
 sudo apt-get install libwxgtk3.0-0v5
 sudo apt-get install libwxgtk3.0-dev 
+```
 
 and then run 'make' at the proper level of the github repo you downloaded.
 
