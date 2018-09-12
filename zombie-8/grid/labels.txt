@@ -1,0 +1,45 @@
+Kick-off: Bow Marketplace
+label = "1"
+
+Finale: Union Square Plaza
+label = "2"
+
+Communicate This!
+label = "3"
+
+Activate the newtork
+label = "4"
+
+Avoid the Debris!
+label = "5"
+
+Zombcom
+label = "6"
+
+Community Resilience
+label = "7"
+
+Go Bag 101
+label = "8"
+
+If you build it, they won't come
+label = "9"
+
+Strength and Agility
+label = "10"
+
+Tourniquet Challenge
+label = "11"
+
+Knot Tying Station
+label = "12"
+
+Ommmm..g Zombies!
+label = "12"
+
+Zombie Training Academy
+label = "13"
+
+Communication Plan
+label = "14"
+
