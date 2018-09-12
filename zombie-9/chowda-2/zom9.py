@@ -1,6 +1,6 @@
 import network
 import picoweb
-import uasyncio
+import uasyncio as asyncio
 import network
 import time
 import gc
@@ -10,66 +10,61 @@ from machine import SPI
 
 from upy_rfm9x import RFM9x
 
+import config #local settings
+from config import radio as RS
+################################################################################
 TIMEOUT = .01
-DISPLAY = True
 
-if DISPLAY:
+################################################################################
+# Hardware Configuration
+
+# OLED display
+if config.use_oled_display:
     import ssd1306
     from machine import I2C
     i2c = I2C(-1, Pin(14), Pin(13))
     oled = ssd1306.SSD1306_I2C(128, 32, i2c)
     oled.fill(0)
-    oled.show()
-
-if DISPLAY:
-    oled.fill(0)
     oled.text("Starting up ...",0,0)
     oled.show()
+    
+def update_display(display_text):
+    if config.use_oled_display:
+        oled.fill(0)
+        oled.text(ip[0], 0, 0)
+        oled.text(':8081',0,10)
+        oled.text(display_text,0,20)
+        oled.show()
 
-sck=Pin(25)
-mosi=Pin(33)
-miso=Pin(32)
-cs = Pin(26, Pin.OUT)
-#reset=Pin(13)
-led = Pin(13,Pin.OUT)
+#LoRa radio device
+spi = SPI(RS.spi_id,
+          baudrate=RS.baudrate,
+          sck=RS.sck,
+          mosi=RS.mosi,
+          miso=RS.miso)
+rfm9x = RFM9x(spi, RS.cs, RS.resetNum, frequency=RS.freq)
 
-resetNum=27
-
-spi=SPI(2,baudrate=5000000,sck=sck,mosi=mosi,miso=miso)
-
-
-
-rfm9x = RFM9x(spi, cs, resetNum, 915.0)
-
-ssid = "zombie"
-password =  "disaster"
- 
+#WiFi network connection
 station = network.WLAN(network.STA_IF)
 station.active(True)
-station.connect(ssid, password)
+station.connect(config.wifi.ssid, config.wifi.password)
 
 while station.isconnected() == False:
     pass
 
-ip = station.ifconfig()
+ip_adrr, _, _, _ = station.ifconfig()
 
-event_sinks = set()
-
-f=open('e.html')
-html=f.read()
-f.close()
+################################################################################
+# Web App (picoweb)
 
 #app = picoweb.WebApp(__name__)
 app = picoweb.WebApp(None)
+event_sinks = set()
 
-
-def update_display(display_text):
-    oled.fill(0)
-    oled.text(ip[0], 0, 0)
-    oled.text(':8081',0,10)
-    oled.text(display_text,0,20)
-    oled.show()
-    
+#load the HTML template
+f = open('e.html')
+html = f.read()
+f.close()
 
 @app.route("/")
 def index(req, resp):
@@ -105,7 +100,7 @@ def goofy(request, response):
         yield from picoweb.jsonify(response, {'success': 0})
         return
 
-def push_event(ev):
+async def push_event(ev):
     global event_sinks
     to_del = set()
 
@@ -123,7 +118,7 @@ def push_event(ev):
         event_sinks.remove(resp)
 
 
-def push_count():
+async def push_count():
     i = 0
     while True:
         rfm9x.receive(timeout=TIMEOUT)
@@ -131,36 +126,24 @@ def push_count():
             try:
                 packet_text = str(rfm9x.packet, 'ascii')
                 rssi=str(rfm9x.rssi)
-                print('Received: {0}'.format(packet_text))
-                print("RSSI:",rssi)
-                if DISPLAY:
-                    display_text="%s" % packet_text
-                    update_display(display_text)
-                #await push_event("[#%s RSSI:%s]:  %s" % (i, rssi, packet_text))
-                await push_event("- %s" % packet_text)
+                print('Received: {}'.format(packet_text))
+                print("RSSI: {}".format(rssi))
+                display_text = packet_text
+                update_display(display_text)
+                await push_event("- {}".format(packet_text))
                 i += 1
             except:
                 print("some error?")
-                if DISPLAY:
-                    display_text="[%s]: (garbled msg)" % i
-                    update_display(display_text)
-        #blink(.1)
+                display_text = "[{}]: (garbled msg)".format(i)
+                update_display(display_text)
         gc.collect()
-        await uasyncio.sleep(.09)
+        await asyncio.sleep(.09)
 
 
-loop = uasyncio.get_event_loop()
+loop = asyncio.get_event_loop()
 loop.create_task(push_count())
 
-print("host:"+ip[0])
-
-if DISPLAY:
-    oled.fill(0)
-    oled.text("IP ADDRESS:",0,0)
-    oled.text(ip[0], 0, 10)
-    oled.text(':8081',0,20)
-    #oled.text(display_text,0,20)
-    oled.show()
+print("host: {}".format(ip_adrr))
+update_display("")   #will show just IP address
     
-app.run(debug=-1,host=ip[0])
-#print(ip[0])
+app.run(debug=-1,host=ip_adrr)

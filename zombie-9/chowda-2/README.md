@@ -1,20 +1,46 @@
 # setting up the esp32
 
-## put relevant files on esp32:
-
+## set up software environment
 ```
+virtualenv venv
+
+source venv/bin/activate
+pip install esptool
+pip install adafruit-ampy
+```
+
+## flash the micropython firmware
+```
+esptool.py --port /dev/ttyUSB0 erase_flash
+esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 esp32-20180821-v1.9.4-479-g828f771e3.bin
+```
+
+## configure the local settings
+In `config.py` change `ssid` and `password` for local wifi testing.
+
+## put relevant files on esp32:
+```
+ampy -p /dev/ttyUSB0 put upip_install_deps.py
+ampy -p /dev/ttyUSB0 put upy_rfm9x.py
+ampy -p /dev/ttyUSB0 put config.py
 ampy -p /dev/ttyUSB0 put e.html
-ampy -p /dev/ttyUSB0 put zom9.html
+ampy -p /dev/ttyUSB0 put zom9.py
 ampy -p /dev/ttyUSB0 put static
 ```
 
 ## connect to esp32
 
+
+### load some final dependencies
+You must have configured the local wifi settings in `config.py` and have an
+Internet connection for this step.
+
 ```
 screen /dev/ttyUSB0 115200
+>>> import upip_install_deps
 ```
 
-## run web server on esp32:
+### run web server on esp32:
 
 ```
 >>> import zom9
