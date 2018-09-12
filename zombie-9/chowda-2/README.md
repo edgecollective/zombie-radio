@@ -16,9 +16,10 @@ esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 esp32-20180821
 ```
 
 ## configure the local settings
-In `config.py` change `ssid` and `password` for local wifi testing 
+In `config.py` change `ssid` and `password` for local wifi testing.
 
 ## put relevant files on esp32:
+```
 ampy -p /dev/ttyUSB0 put upip_install_deps.py
 ampy -p /dev/ttyUSB0 put upy_rfm9x.py
 ampy -p /dev/ttyUSB0 put config.py
@@ -30,7 +31,7 @@ ampy -p /dev/ttyUSB0 put static
 ## connect to esp32
 
 
-## load some final dependencies
+### load some final dependencies
 You must have configured the local wifi settings in `config.py` and have an
 Internet connection for this step.
 
@@ -39,10 +40,9 @@ screen /dev/ttyUSB0 115200
 >>> import upip_install_deps
 ```
 
-## run web server on esp32:
+### run web server on esp32:
 
 ```
-screen /dev/ttyUSB0 115200
 >>> import zom9
 ```
 
