@@ -50,5 +50,14 @@ for each, install on the M0 via ampy
 
 use ampy to install 'remote.py' from this github repo
 
+# Known issues
+
+The ESP32 can receive messages and replace the relevant 'div' element on the page, nicely.
+
+But when the ESP32 is sending, the picweb app seems to 'refresh' the web page, losing previous content.
+
+This might be fixed via some tricks with flask; a more robust, longer-term solution would be to store messages (received / sent) in a local database, and display them.
+
+A potential model for doing this is [here](https://github.com/pfalcon/notes-pico).
 
 
