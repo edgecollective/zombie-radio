@@ -10,8 +10,8 @@ from machine import SPI
 
 from upy_rfm9x import RFM9x
 
-import settings #local settings
-from settings import radio as RS
+import config #local settings
+from config import radio as RS
 ################################################################################
 TIMEOUT = .01
 
@@ -19,7 +19,7 @@ TIMEOUT = .01
 # Hardware Configuration
 
 # OLED display
-if settings.use_oled_display:
+if config.use_oled_display:
     import ssd1306
     from machine import I2C
     i2c = I2C(-1, Pin(14), Pin(13))
@@ -29,7 +29,7 @@ if settings.use_oled_display:
     oled.show()
     
 def update_display(display_text):
-    if settings.use_oled_display:
+    if config.use_oled_display:
         oled.fill(0)
         oled.text(ip[0], 0, 0)
         oled.text(':8081',0,10)
@@ -47,12 +47,12 @@ rfm9x = RFM9x(spi, RS.cs, RS.resetNum, frequency=RS.freq)
 #WiFi network connection
 station = network.WLAN(network.STA_IF)
 station.active(True)
-station.connect(settings.wifi.ssid, settings.wifi.password)
+station.connect(config.wifi.ssid, config.wifi.password)
 
 while station.isconnected() == False:
     pass
 
-ip_adrr, _ = station.ifconfig()
+ip_adrr, _, _, _ = station.ifconfig()
 
 ################################################################################
 # Web App (picoweb)

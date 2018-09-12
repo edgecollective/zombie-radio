@@ -2,7 +2,7 @@ from machine import Pin
 
 led = Pin(13,Pin.OUT)
 
-use_oled_display = True
+use_oled_display = False
 
 class radio:
     spi_id = 2
