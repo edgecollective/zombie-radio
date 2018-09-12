@@ -1,5 +1,5 @@
 
-import uasyncio
+import uasyncio as asyncio
 import picoweb
 import network
 import time
@@ -11,7 +11,7 @@ from machine import SPI
 from upy_rfm9x import RFM9x
 
 TIMEOUT = .01
-DISPLAY = True
+DISPLAY = False
 
 if DISPLAY:
     import ssd1306
@@ -26,14 +26,25 @@ if DISPLAY:
     oled.text("Starting up ...",0,0)
     oled.show()
 
-sck=Pin(25)
-mosi=Pin(33)
-miso=Pin(32)
-cs = Pin(26, Pin.OUT)
+# Craig's pins
+sck=Pin(5)
+mosi=Pin(18)
+miso=Pin(19)
+cs = Pin(12, Pin.OUT)
 #reset=Pin(13)
 led = Pin(13,Pin.OUT)
 
-resetNum=27
+resetNum=15
+
+
+# FIXME Don's pins
+#sck=Pin(25)
+#mosi=Pin(33)
+#miso=Pin(32)
+#cs = Pin(26, Pin.OUT)
+#led = Pin(13,Pin.OUT)
+
+#resetNum=27
 
 spi=SPI(2,baudrate=5000000,sck=sck,mosi=mosi,miso=miso)
 
@@ -41,8 +52,11 @@ spi=SPI(2,baudrate=5000000,sck=sck,mosi=mosi,miso=miso)
 
 rfm9x = RFM9x(spi, cs, resetNum, 915.0)
 
-ssid = "jpl"
-password =  "mars-adventure"
+
+#ssid = "jpl"
+#password =  "mars-adventure"
+from secret_settings import ssid, password
+
  
 station = network.WLAN(network.STA_IF)
 station.active(True)
@@ -63,22 +77,22 @@ html=f.read()
 f.close()
 
 
-def blink(duration):
+async def blink(duration):
     led.value(1)
-    time.sleep(duration)
+    await asyncio.sleep(duration)
     led.value(0)
-    time.sleep(duration)
+    await asyncio.sleep(duration)
 
-def index(req, resp):
-    yield from picoweb.start_response(resp)
-    yield from resp.awrite(html)
+async def index(req, resp):
+    await picoweb.start_response(resp)
+    await resp.awrite(html)
 
-def events(req, resp):
+async def events(req, resp):
     global event_sinks
     print("Event source %r connected" % resp)
-    yield from resp.awrite("HTTP/1.0 200 OK\r\n")
-    yield from resp.awrite("Content-Type: text/event-stream\r\n")
-    yield from resp.awrite("\r\n")
+    await resp.awrite("HTTP/1.0 200 OK\r\n")
+    await resp.awrite("Content-Type: text/event-stream\r\n")
+    await resp.awrite("\r\n")
     event_sinks.add(resp)
     return False
 
@@ -97,8 +111,7 @@ ROUTES = [
 #
 # Background service part
 #
-
-def push_event(ev):
+async def push_event(ev):
     global event_sinks
     to_del = set()
 
@@ -116,7 +129,7 @@ def push_event(ev):
         event_sinks.remove(resp)
 
 
-def push_count():
+async def push_count():
     i = 0
     while True:
         rfm9x.receive(timeout=TIMEOUT)
@@ -137,9 +150,9 @@ def push_count():
                 if DISPLAY:
                     display_text="[%s]: (garbled msg)" % i
                     update_display(display_text)
-        blink(.1)
+        await blink(0.1)
         gc.collect()
-        await uasyncio.sleep(.09)
+        await asyncio.sleep(.09)
 
 
 #import logging
@@ -148,7 +161,7 @@ def push_count():
 
 
 
-loop = uasyncio.get_event_loop()
+loop = asyncio.get_event_loop()
 loop.create_task(push_count())
 
 #app = picoweb.WebApp(__name__, ROUTES)
