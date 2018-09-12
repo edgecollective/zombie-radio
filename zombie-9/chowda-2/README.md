@@ -46,7 +46,9 @@ You can follow the instructions [here](https://learn.adafruit.com/adafruit-rfm69
 
 for each, install on the M0 via ampy
 
+## adding a convenience script for send / receive
 
+use ampy to install 'remote.py' from this github repo
 
 
 
