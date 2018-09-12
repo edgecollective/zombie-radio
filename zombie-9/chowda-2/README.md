@@ -9,7 +9,10 @@ ampy -p /dev/ttyUSB0 put static
 screen /dev/ttyUSB0 115200
 
 ## run web server on esp32:
+
+```
 >>> import zom9
+```
 
 # running feather m0 lora with circuitpython
 
